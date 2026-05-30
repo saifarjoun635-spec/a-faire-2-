@@ -93,7 +93,7 @@ const Admin = () => {
             <div key={dn.id} className="bg-[#FAF9F6] rounded-2xl p-6 border border-[#D5D0C5] flex flex-wrap justify-between gap-3">
               <div>
                 <span className="font-serif text-xl text-[#556B2F]">{Number(dn.amount).toFixed(2)} {String(dn.currency).toUpperCase()}</span>
-                <span className="text-sm text-[#5C5C5C] ml-3">{dn.frequency === "monthly" ? "Mensuel" : "Unique"}</span>
+                <span className="text-sm text-[#5C5C5C] ml-3">{dn.frequency === "monthly" ? t.donation.frequencyMonthly : t.donation.frequencyOneTime}</span>
                 <p className="text-sm text-[#5C5C5C] mt-1">{dn.donor_name} {dn.donor_email && `• ${dn.donor_email}`}</p>
               </div>
               <div className="text-right">
