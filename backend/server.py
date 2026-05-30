@@ -1,15 +1,21 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Header
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, EmailStr
+from typing import List, Optional, Dict
 import uuid
 from datetime import datetime, timezone
 
+from emergentintegrations.payments.stripe.checkout import (
+    StripeCheckout,
+    CheckoutSessionResponse,
+    CheckoutStatusResponse,
+    CheckoutSessionRequest,
+)
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -19,54 +25,205 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Create the main app without a prefix
-app = FastAPI()
+STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY')
+ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN')
 
-# Create a router with the /api prefix
+# Predefined donation amounts (CAD) defined server-side
+PREDEFINED_AMOUNTS = {
+    "25": 25.00,
+    "50": 50.00,
+    "100": 100.00,
+    "250": 250.00,
+}
+MIN_DONATION = 1.00
+MAX_DONATION = 50000.00
+DONATION_CURRENCY = "cad"
+
+app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
 
-# Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
-    
+# ---------------- Models ----------------
+class ContactCreate(BaseModel):
+    name: str
+    email: EmailStr
+    phone: Optional[str] = ""
+    subject: Optional[str] = ""
+    message: str
+
+
+class Contact(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    name: str
+    email: str
+    phone: str = ""
+    subject: str = ""
+    message: str
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
 
-# Add your routes to the router instead of directly to app
+class DonationCheckoutRequest(BaseModel):
+    package_id: Optional[str] = None          # predefined amount key
+    custom_amount: Optional[float] = None     # custom donation amount
+    frequency: str = "one_time"               # "one_time" or "monthly"
+    donor_name: Optional[str] = ""
+    donor_email: Optional[str] = ""
+    origin_url: str
+
+
+# ---------------- Routes ----------------
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Groupe Havre d'Amour et de Paix API"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
 
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
+# ----- Contact -----
+@api_router.post("/contact", response_model=Contact)
+async def create_contact(payload: ContactCreate):
+    contact = Contact(**payload.model_dump())
+    await db.contacts.insert_one(contact.model_dump())
+    logger.info(f"New contact message from {contact.email}")
+    return contact
 
-# Include the router in the main app
+
+@api_router.get("/contact", response_model=List[Contact])
+async def list_contacts(x_admin_token: Optional[str] = Header(None)):
+    if not ADMIN_TOKEN or x_admin_token != ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    docs = await db.contacts.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return docs
+
+
+# ----- Donations / Stripe -----
+def _get_stripe(request: Request) -> StripeCheckout:
+    if not STRIPE_API_KEY:
+        raise HTTPException(status_code=500, detail="Stripe not configured")
+    host_url = str(request.base_url)
+    webhook_url = f"{host_url}api/webhook/stripe"
+    return StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+
+
+@api_router.post("/donations/checkout")
+async def create_donation_checkout(payload: DonationCheckoutRequest, request: Request):
+    # Determine amount server-side
+    if payload.package_id:
+        if payload.package_id not in PREDEFINED_AMOUNTS:
+            raise HTTPException(status_code=400, detail="Invalid donation package")
+        amount = PREDEFINED_AMOUNTS[payload.package_id]
+    elif payload.custom_amount is not None:
+        amount = round(float(payload.custom_amount), 2)
+        if amount < MIN_DONATION or amount > MAX_DONATION:
+            raise HTTPException(status_code=400, detail="Donation amount out of range")
+    else:
+        raise HTTPException(status_code=400, detail="No amount provided")
+
+    frequency = payload.frequency if payload.frequency in ("one_time", "monthly") else "one_time"
+
+    origin = payload.origin_url.rstrip("/")
+    success_url = f"{origin}/don/merci?session_id={{CHECKOUT_SESSION_ID}}"
+    cancel_url = f"{origin}/don"
+
+    metadata = {
+        "type": "donation",
+        "frequency": frequency,
+        "donor_name": payload.donor_name or "",
+        "donor_email": payload.donor_email or "",
+    }
+
+    stripe_checkout = _get_stripe(request)
+    checkout_request = CheckoutSessionRequest(
+        amount=amount,
+        currency=DONATION_CURRENCY,
+        success_url=success_url,
+        cancel_url=cancel_url,
+        metadata=metadata,
+    )
+    session: CheckoutSessionResponse = await stripe_checkout.create_checkout_session(checkout_request)
+
+    transaction = {
+        "id": str(uuid.uuid4()),
+        "session_id": session.session_id,
+        "amount": amount,
+        "currency": DONATION_CURRENCY,
+        "frequency": frequency,
+        "donor_name": payload.donor_name or "",
+        "donor_email": payload.donor_email or "",
+        "metadata": metadata,
+        "payment_status": "initiated",
+        "status": "initiated",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.payment_transactions.insert_one(transaction)
+
+    return {"url": session.url, "session_id": session.session_id}
+
+
+@api_router.get("/donations/status/{session_id}")
+async def donation_status(session_id: str, request: Request):
+    txn = await db.payment_transactions.find_one({"session_id": session_id}, {"_id": 0})
+    if not txn:
+        raise HTTPException(status_code=404, detail="Transaction not found")
+
+    # If already finalized, return stored state (avoid double processing)
+    if txn.get("payment_status") == "paid":
+        return {
+            "payment_status": txn["payment_status"],
+            "status": txn["status"],
+            "amount": txn["amount"],
+            "currency": txn["currency"],
+            "frequency": txn.get("frequency", "one_time"),
+        }
+
+    stripe_checkout = _get_stripe(request)
+    checkout_status: CheckoutStatusResponse = await stripe_checkout.get_checkout_status(session_id)
+
+    update = {
+        "payment_status": checkout_status.payment_status,
+        "status": checkout_status.status,
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.payment_transactions.update_one({"session_id": session_id}, {"$set": update})
+
+    return {
+        "payment_status": checkout_status.payment_status,
+        "status": checkout_status.status,
+        "amount": checkout_status.amount_total / 100 if checkout_status.amount_total else txn["amount"],
+        "currency": checkout_status.currency or txn["currency"],
+        "frequency": txn.get("frequency", "one_time"),
+    }
+
+
+@api_router.get("/donations")
+async def list_donations(x_admin_token: Optional[str] = Header(None)):
+    if not ADMIN_TOKEN or x_admin_token != ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    docs = await db.payment_transactions.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return docs
+
+
+@api_router.post("/webhook/stripe")
+async def stripe_webhook(request: Request):
+    body = await request.body()
+    signature = request.headers.get("Stripe-Signature")
+    stripe_checkout = _get_stripe(request)
+    try:
+        webhook_response = await stripe_checkout.handle_webhook(body, signature)
+    except Exception as e:
+        logger.error(f"Webhook error: {e}")
+        raise HTTPException(status_code=400, detail="Webhook handling failed")
+
+    if webhook_response.session_id:
+        await db.payment_transactions.update_one(
+            {"session_id": webhook_response.session_id},
+            {"$set": {
+                "payment_status": webhook_response.payment_status,
+                "updated_at": datetime.now(timezone.utc).isoformat(),
+            }},
+        )
+    return {"received": True}
+
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -77,12 +234,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
 
 @app.on_event("shutdown")
 async def shutdown_db_client():

@@ -1,0 +1,38 @@
+{
+  "summary": "First-iteration e2e testing of Groupe Havre d'Amour et de Paix bilingual OBNL site. Backend pytest suite (16 tests, 100% pass) covers /api/, contact create + email validation, contact admin auth (401/200), donations checkout (preset 50, custom, monthly), amount validation (min/max/missing/invalid package), donation status, and donations admin list. Frontend Playwright covers: home hero/services/banner, FR<->EN language toggle (nav + hero), navigation to all 6 routes, contact form submit + success toast + form clear, donation preset 100$ -> redirected to checkout.stripe.com, donation custom 37$ -> redirected to checkout.stripe.com, admin wrong token blocked, correct token 'ghap2025admin' loads dashboard with messages + donations tabs. All flows working.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/admin dashboard", "issues": ["Frequency labels 'Unique' / 'Mensuel' are hardcoded in French (Admin.jsx line ~96). When language is toggled to EN, these labels (and the page heading 'Administration', tab labels) still appear in French because Admin.jsx does not use the i18n keys for these strings. Recommend wiring through useLanguage()/t.admin keys."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Optional: localize hardcoded French strings in Admin.jsx (Unique/Mensuel and dashboard heading) so EN toggle is consistent across all pages."
+  ],
+  "critical_code_review_comments": [
+    "server.py: logger is defined on line 241 AFTER it is referenced inside create_contact (line 85). Works at request-time because module is fully loaded by then, but stylistically should be moved above route definitions to avoid future surprises.",
+    "server.py uses @app.on_event('shutdown') which is deprecated in modern FastAPI — consider lifespan handlers (non-blocking).",
+    "Donation custom_amount validation accepts None and falls through; current behavior correct because explicit None check exists. No fix needed.",
+    "Stripe webhook secret is not verified explicitly here — relying on emergentintegrations StripeCheckout.handle_webhook. Acceptable as-is for internal helper."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py (new)",
+    "/app/backend/tests/__init__.py (new empty)"
+  ],
+  "success_rate": {"backend": "100% (16/16)", "frontend": "100% (all critical flows)"},
+  "test_credentials": "Admin token: ghap2025admin (from backend/.env ADMIN_TOKEN). Stripe sk_test_emergent.",
+  "seed_data_creation": "Created TEST_-prefixed contact messages and several initiated donation transactions (25, 50, 100, 12.50 monthly, 37 custom CAD). Cleanup not run; safe TEST_ prefix used.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Backend pytest at /app/backend/tests/backend_test.py — reuse for regression. All endpoints documented: /api/, /api/contact (POST + GET admin), /api/donations/checkout (POST), /api/donations/status/{session_id} (GET), /api/donations (GET admin), /api/webhook/stripe. Frontend routes: /, /services, /residences, /a-propos, /regions, /contact, /don, /don/merci, /admin. data-testid attributes are well-populated across all pages.",
+  "rca of the issue": "N/A — no failures."
+}
