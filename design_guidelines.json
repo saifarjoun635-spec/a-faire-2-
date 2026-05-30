@@ -1,0 +1,169 @@
+{
+  "project_name": "Groupe Havre d'Amour et de Paix inc. Website",
+  "domain": "Non-profit, Respite Care, Intermediate Housing (RI)",
+  "theme": "Light",
+  "archetype": "Archetype 1: Organic & Earthy",
+  "mood": "Warm, dignified, human, trustworthy, calming, organic. Avoid clinical or purely corporate aesthetics.",
+  "language": "Bilingual (FR/EN)",
+  "colors": {
+    "background": "#F9F6F0",
+    "surface": "#FAF9F6",
+    "surface_alt": "#EAE4D3",
+    "primary": "#556B2F",
+    "primary_hover": "#425622",
+    "accent": "#C8795A",
+    "accent_hover": "#B06548",
+    "text_main": "#2C2C2C",
+    "text_muted": "#5C5C5C",
+    "text_on_primary": "#FFFFFF",
+    "border": "#D5D0C5"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Playfair Display, serif",
+      "weights": ["400", "500", "600"],
+      "tracking": "tracking-tight",
+      "notes": "Use for H1 to H4. Expresses dignity, humanity, and warmth. Never use for dense body text."
+    },
+    "body": {
+      "font_family": "Manrope, sans-serif",
+      "weights": ["400", "500", "600"],
+      "tracking": "tracking-normal",
+      "notes": "Highly accessible, clean, and modern. Ensures easy reading for older demographics."
+    },
+    "sizes": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl",
+      "h3": "text-2xl sm:text-3xl",
+      "h4": "text-xl sm:text-2xl",
+      "body_lg": "text-lg",
+      "body_base": "text-base",
+      "body_sm": "text-sm"
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous Spacing Philosophy. Use 2-3x more spacing than typical designs to create breathing room.",
+    "container_padding": "p-8 md:p-12 lg:p-16",
+    "section_gap": "gap-16 md:gap-24 lg:gap-32",
+    "border_radius": {
+      "cards": "rounded-3xl",
+      "buttons": "rounded-full",
+      "images": "rounded-[2rem]"
+    },
+    "shadows": {
+      "soft": "shadow-[0_8px_30px_rgba(85,107,47,0.08)]",
+      "medium": "shadow-[0_12px_40px_rgba(85,107,47,0.12)]"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#556B2F] text-white hover:bg-[#425622] rounded-full px-8 py-4 transition-colors font-body font-medium",
+      "accent": "bg-[#C8795A] text-white hover:bg-[#B06548] rounded-full px-8 py-4 transition-colors font-body font-medium shadow-md",
+      "outline": "border-2 border-[#556B2F] text-[#556B2F] hover:bg-[#556B2F] hover:text-white rounded-full px-8 py-4 transition-colors font-body font-medium"
+    },
+    "cards": {
+      "base": "bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(85,107,47,0.08)]",
+      "hover": "hover:-translate-y-2 transition-transform duration-300"
+    },
+    "navigation": {
+      "style": "Glassmorphism with warmth. backdrop-blur-xl bg-[#F9F6F0]/80 border-b border-[#D5D0C5]/50 sticky top-0 z-50",
+      "links": "text-[#2C2C2C] hover:text-[#556B2F] font-medium transition-colors"
+    },
+    "forms": {
+      "inputs": "bg-transparent border-b-2 border-[#D5D0C5] focus:border-[#556B2F] rounded-none px-0 py-2 outline-none transition-colors w-full font-body text-[#2C2C2C] placeholder-[#5C5C5C]",
+      "labels": "text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-2 block"
+    }
+  },
+  "media": {
+    "provided_lobby_1": {
+      "url": "https://customer-assets.emergentagent.com/job_969322bc-0be6-45b7-af62-6459fded2ce5/artifacts/riiamchv_image.png",
+      "description": "Lobby interior with green curved sofa and rattan lights.",
+      "category": "gallery"
+    },
+    "provided_lobby_2": {
+      "url": "https://customer-assets.emergentagent.com/job_969322bc-0be6-45b7-af62-6459fded2ce5/artifacts/tm5n64vq_image.png",
+      "description": "Warm wood paneling and organic decor in residence.",
+      "category": "gallery"
+    },
+    "caregiver_hands": {
+      "url": "https://images.pexels.com/photos/16364308/pexels-photo-16364308.jpeg",
+      "description": "Caregiver holding the hands of an elderly woman.",
+      "category": "hero_or_services"
+    },
+    "smiling_seniors": {
+      "url": "https://images.pexels.com/photos/8153907/pexels-photo-8153907.jpeg",
+      "description": "Happy senior adults enjoying a lively gathering.",
+      "category": "community_or_about"
+    },
+    "abstract_background": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/969322bc-0be6-45b7-af62-6459fded2ce5/images/1bdde14e7b41a5497f2c1579f5594626f0940b28709c603c60f94780b6d25648.png",
+      "description": "Warm organic shapes in olive green and terracotta.",
+      "category": "hero_background_or_footer"
+    },
+    "growth_hands": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/969322bc-0be6-45b7-af62-6459fded2ce5/images/8ba8ee2e0c7cfc19545bd918925402778ce7423c899e323d8e2224361e66e617.png",
+      "description": "Hands planting a small sapling.",
+      "category": "donation_or_mission"
+    }
+  },
+  "iconography": {
+    "library": "lucide-react",
+    "style": "Use stroke-width 1.5, warm colors matching primary/accent. Smooth and rounded."
+  },
+  "pages": {
+    "home": {
+      "sections": [
+        "Hero: Abstract background overlay, warm mission statement, CTA (Explore Services / Make a Donation)",
+        "Devise Section: 'Accueillir avec amour...' in large elegant serif font.",
+        "Quick Services Grid: Hébergement, Répit de jour, Soins, Loisirs (Bento-style layout)",
+        "Mission/Vision Teaser",
+        "Donation Banner (Terracotta background)"
+      ]
+    },
+    "services": {
+      "sections": [
+        "Intro Hero: Focus on holistic care",
+        "Hébergement RI Details",
+        "Répit Types: Journée, Domicile, Résidence",
+        "Activities & Health: Loisirs, Meals, Security 24/7"
+      ]
+    },
+    "gallery": {
+      "sections": [
+        "Photo Grid showcasing provided residence photos with subtle hover zooms."
+      ]
+    },
+    "about": {
+      "sections": [
+        "Mission, Vision, and Values detailed layout.",
+        "Regional Presence Map/List (Montréal, Outaouais, Mauricie, Ottawa)"
+      ]
+    },
+    "donation": {
+      "sections": [
+        "Donation Form: Custom UI for predefined amounts + custom amount input.",
+        "Toggle for One-time vs Monthly.",
+        "Trust signals and impact storytelling."
+      ]
+    },
+    "contact": {
+      "sections": [
+        "Information block (Phone, Email, Address).",
+        "Contact Form."
+      ]
+    }
+  },
+  "testing": {
+    "attributes": "All interactive elements must use `data-testid` (e.g., `data-testid=\"nav-donation-button\"`, `data-testid=\"hero-cta\"`)."
+  },
+  "instructions_to_main_agent": [
+    "Strictly follow the color palette to ensure warmth and approachability. Do NOT use default Tailwind blues or generic grays.",
+    "Typography hierarchy is crucial: Use Playfair Display for headings and Manrope for body text. Ensure contrast meets APCA/WCAG standards.",
+    "Implement language toggles effectively without cluttered menus.",
+    "Ensure the Donation page relies on intuitive Shadcn forms (heavily styled to remove the 'tech/SaaS' look).",
+    "Use organic spacing. Avoid tight borders. Use the provided images extensively to establish trust.",
+    "Do NOT use placeholder images. Rely on the provided media list.",
+    "Ensure the header navigation is sticky and clear on both desktop and mobile.",
+    "Use `.js` files (not `.tsx`) for all React components."
+  ]
+}
