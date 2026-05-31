@@ -31,9 +31,9 @@ const Navbar = () => {
           <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#556B2F] text-white">
             <Heart className="w-5 h-5" strokeWidth={1.8} />
           </span>
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-serif text-lg text-[#2C2C2C]">Havre d'Amour et de Paix</span>
-            <span className="text-[11px] tracking-widest uppercase text-[#5C5C5C]">Groupe • OBNL</span>
+          <span className="flex flex-col leading-tight">
+            <span className="font-serif text-sm sm:text-lg text-[#2C2C2C]">Havre d'Amour et de Paix</span>
+            <span className="text-[10px] sm:text-[11px] tracking-widest uppercase text-[#5C5C5C]">Groupe • OBNL</span>
           </span>
         </Link>
 
