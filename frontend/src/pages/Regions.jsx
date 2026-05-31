@@ -5,7 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
 
-const cardImages = [MEDIA.lobby1, MEDIA.lobby2, MEDIA.smilingSeniors, MEDIA.caregiverHands];
+const cardImages = [MEDIA.cityMontreal, MEDIA.cityOutaouais, MEDIA.cityMauricie, MEDIA.cityOttawa];
 
 const Regions = () => {
   const { t } = useLanguage();
