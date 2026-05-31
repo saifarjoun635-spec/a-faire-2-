@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Heart, ShieldCheck, Check, Info } from "lucide-react";
+import { Heart, ShieldCheck, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
@@ -12,7 +12,6 @@ const PRESETS = ["25", "50", "100", "250"];
 const Donation = () => {
   const { t } = useLanguage();
   const d = t.donation;
-  const [frequency, setFrequency] = useState("one_time");
   const [selected, setSelected] = useState("50");
   const [custom, setCustom] = useState("");
   const [donor, setDonor] = useState({ name: "", email: "" });
@@ -23,7 +22,7 @@ const Donation = () => {
 
   const handleDonate = async () => {
     const body = {
-      frequency,
+      frequency: "one_time",
       donor_name: donor.name,
       donor_email: donor.email,
       origin_url: window.location.origin,
@@ -69,25 +68,6 @@ const Donation = () => {
         {/* Form */}
         <Reveal className="lg:col-span-3">
           <div className="bg-[#FAF9F6] rounded-3xl p-8 sm:p-10 border border-[#D5D0C5] shadow-[0_12px_40px_rgba(85,107,47,0.12)]">
-            {/* Frequency */}
-            <div className="flex p-1.5 bg-[#EAE4D3] rounded-full mb-8" data-testid="frequency-toggle">
-              {[
-                { id: "one_time", label: d.frequencyOneTime },
-                { id: "monthly", label: d.frequencyMonthly },
-              ].map((f) => (
-                <button
-                  key={f.id}
-                  onClick={() => setFrequency(f.id)}
-                  data-testid={`freq-${f.id}`}
-                  className={`flex-1 py-3 rounded-full text-sm font-semibold transition-colors ${
-                    frequency === f.id ? "bg-[#556B2F] text-white shadow" : "text-[#5C5C5C] hover:text-[#556B2F]"
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-
             <p className="text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-4">{d.chooseAmount}</p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               {PRESETS.map((p) => (
@@ -132,13 +112,6 @@ const Donation = () => {
                   className="bg-transparent border-b-2 border-[#D5D0C5] focus:border-[#556B2F] px-0 py-2 outline-none transition-colors w-full text-[#2C2C2C]" />
               </div>
             </div>
-
-            {frequency === "monthly" && (
-              <div className="flex items-start gap-3 bg-[#EAE4D3] rounded-2xl p-4 mb-6 text-sm text-[#5C5C5C]">
-                <Info className="w-5 h-5 text-[#556B2F] shrink-0 mt-0.5" strokeWidth={1.8} />
-                <p>{d.monthlyNote}</p>
-              </div>
-            )}
 
             <button
               onClick={handleDonate}

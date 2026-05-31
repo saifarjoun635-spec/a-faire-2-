@@ -80,7 +80,10 @@ export const translations = {
         "Bingo",
         "Chant",
         "Programme d'activités adaptées",
-        "Jeux de société et jeux de cartes",
+        "Jeux de société",
+        "Loisirs disponibles",
+        "Jeux de cartes",
+        "Activités variées (selon l'horaire établi)",
         "Activités et sorties à l'extérieur",
       ],
       clientTitle: "Notre clientèle",
@@ -95,8 +98,24 @@ export const translations = {
     residences: {
       title: "Nos résidences",
       subtitle:
-        "Des milieux de vie chaleureux et apaisants. De nouvelles résidences s'ajouteront à notre réseau.",
+        "Des milieux de vie chaleureux et apaisants, pensés pour le bien-être et la dignité. De nouvelles résidences s'ajouteront à notre réseau.",
+      introTitle: "Un véritable milieu de vie",
+      introText:
+        "Nos résidences sont conçues comme de vrais milieux de vie : lumineux, sécuritaires et chaleureux. Chaque espace favorise la tranquillité, les rencontres et le sentiment d'appartenance, dans le respect du rythme de chaque personne.",
+      featuresTitle: "Nos espaces et commodités",
+      features: [
+        { title: "Chambres confortables", desc: "Des chambres accueillantes et adaptées, avec entretien de la literie et des vêtements." },
+        { title: "Espaces communs chaleureux", desc: "Salons lumineux et conviviaux pour se rassembler, se reposer et partager des moments." },
+        { title: "Salle à manger", desc: "Formule 3 repas par jour, des repas chauds et nutritifs servis dans un cadre agréable." },
+        { title: "Sécurité 24h / 7j", desc: "Une présence permanente pour la tranquillité d'esprit des résidents et des familles." },
+        { title: "Soins sur place", desc: "Gestion des médicaments, soins d'hygiène et visite de spécialistes à la résidence." },
+        { title: "Espaces de loisirs", desc: "Des aires dédiées aux activités, aux jeux et à la détente." },
+      ],
+      galleryTitle: "Galerie",
+      leisureIntro: "La vie en résidence est rythmée par des activités variées et adaptées :",
       note: "Photos d'une de nos résidences.",
+      ctaTitle: "Envie d'en savoir plus ?",
+      ctaText: "Contactez-nous pour une visite ou une demande d'admission.",
     },
     about: {
       title: "À propos de nous",
@@ -134,9 +153,22 @@ export const translations = {
     regions: {
       title: "Une présence qui grandit",
       subtitle:
-        "Nous développons progressivement notre présence à travers le Québec et la région d'Ottawa.",
-      list: ["Montréal", "Outaouais", "Mauricie", "Ottawa"],
+        "Nous développons progressivement notre présence à travers le Québec et la région d'Ottawa, afin d'offrir nos services au plus près des familles.",
+      cards: [
+        { name: "Montréal", status: "Résidence active", desc: "Notre point d'ancrage, au cœur du centre-ville, où nous accueillons les personnes en hébergement et en répit." },
+        { name: "Outaouais", status: "En développement", desc: "Un projet de milieu de vie et de répit pour répondre aux besoins grandissants de la région." },
+        { name: "Mauricie", status: "En développement", desc: "Le déploiement de services de proximité, en collaboration avec les familles et les partenaires locaux." },
+        { name: "Ottawa", status: "En développement", desc: "Une présence pensée pour les familles de la région, dans un esprit de continuité et de proximité." },
+      ],
+      statsTitle: "Notre portée",
+      stats: [
+        { value: "4", label: "Régions desservies ou en développement" },
+        { value: "24/7", label: "Accompagnement et sécurité" },
+        { value: "100%", label: "Approche centrée sur la personne" },
+      ],
       future: "Et d'autres régions à venir…",
+      ctaTitle: "Une présence dans votre région ?",
+      ctaText: "Contactez-nous pour connaître nos services disponibles ou pour discuter d'un projet dans votre communauté.",
     },
     donation: {
       title: "Faire un don",
@@ -289,7 +321,10 @@ export const translations = {
         "Bingo",
         "Singing",
         "Adapted activities program",
-        "Board games and card games",
+        "Board games",
+        "Available leisure activities",
+        "Card games",
+        "Varied activities (per the set schedule)",
         "Outdoor activities and outings",
       ],
       clientTitle: "Who we serve",
@@ -304,8 +339,24 @@ export const translations = {
     residences: {
       title: "Our residences",
       subtitle:
-        "Warm and calming living environments. New residences will be added to our network.",
+        "Warm and calming living environments, designed for well-being and dignity. New residences will be added to our network.",
+      introTitle: "A true living environment",
+      introText:
+        "Our residences are designed as real living environments: bright, safe and warm. Every space fosters calm, connection and a sense of belonging, while respecting each person's own pace.",
+      featuresTitle: "Our spaces and amenities",
+      features: [
+        { title: "Comfortable rooms", desc: "Welcoming, adapted rooms with bed linen and laundry care." },
+        { title: "Warm common areas", desc: "Bright, friendly lounges to gather, rest and share moments." },
+        { title: "Dining room", desc: "Three meals a day — warm, nutritious meals served in a pleasant setting." },
+        { title: "24/7 security", desc: "A permanent presence for the peace of mind of residents and families." },
+        { title: "On-site care", desc: "Medication management, hygiene care and specialist visits at the residence." },
+        { title: "Leisure spaces", desc: "Dedicated areas for activities, games and relaxation." },
+      ],
+      galleryTitle: "Gallery",
+      leisureIntro: "Life in the residence is filled with varied, adapted activities:",
       note: "Photos of one of our residences.",
+      ctaTitle: "Want to learn more?",
+      ctaText: "Contact us for a visit or an admission request.",
     },
     about: {
       title: "About us",
@@ -342,9 +393,23 @@ export const translations = {
     },
     regions: {
       title: "A growing presence",
-      subtitle: "We are gradually developing our presence across Quebec and the Ottawa area.",
-      list: ["Montreal", "Outaouais", "Mauricie", "Ottawa"],
+      subtitle:
+        "We are gradually developing our presence across Quebec and the Ottawa area, to bring our services closer to families.",
+      cards: [
+        { name: "Montreal", status: "Active residence", desc: "Our anchor point, in the heart of downtown, where we welcome people for housing and respite." },
+        { name: "Outaouais", status: "In development", desc: "A living and respite environment project to meet the region's growing needs." },
+        { name: "Mauricie", status: "In development", desc: "Rolling out local services, in collaboration with families and local partners." },
+        { name: "Ottawa", status: "In development", desc: "A presence designed for families in the region, in a spirit of continuity and closeness." },
+      ],
+      statsTitle: "Our reach",
+      stats: [
+        { value: "4", label: "Regions served or in development" },
+        { value: "24/7", label: "Support and security" },
+        { value: "100%", label: "Person-centred approach" },
+      ],
       future: "And more regions to come…",
+      ctaTitle: "A presence in your region?",
+      ctaText: "Contact us to learn about our available services or to discuss a project in your community.",
     },
     donation: {
       title: "Make a donation",

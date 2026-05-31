@@ -41,6 +41,10 @@ html {
     scroll-behavior: smooth;
 }
 
+#emergent-badge {
+    display: none !important;
+}
+
 /* Shadcn token mapping to brand */
 @layer base {
     :root {
