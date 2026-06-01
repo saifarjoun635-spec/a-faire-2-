@@ -88,7 +88,7 @@ const Home = () => {
             />
             <div className="absolute -bottom-6 -left-2 sm:left-6 bg-[#FAF9F6] rounded-3xl px-6 py-5 shadow-[0_12px_40px_rgba(79,138,45,0.15)] border border-[#D5D0C5] max-w-[230px]">
               <p className="font-serif text-2xl text-[#4F8A2D]">24h / 7j</p>
-              <p className="text-sm text-[#5C5C5C] mt-1">Sécurité & accompagnement permanents</p>
+              <p className="text-sm text-[#5C5C5C] mt-1">{t.home.heroCardSub}</p>
             </div>
           </motion.div>
         </div>

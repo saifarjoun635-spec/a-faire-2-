@@ -23,6 +23,7 @@ export const translations = {
       heroTitle: "Accueillir avec amour, accompagner avec dignité",
       heroText:
         "Un milieu de vie chaleureux et sécuritaire pour les personnes vulnérables — aînés, personnes vivant avec une DI-TSA ou des enjeux de santé mentale — et un soutien précieux pour leurs proches aidants.",
+      heroCardSub: "Sécurité & accompagnement permanents",
       deviseLabel: "Notre devise",
       devise:
         "« Accueillir avec amour, accompagner avec dignité, et ouvrir des chemins de vie vers plus de paix, d'autonomie et d'appartenance. »",
@@ -298,6 +299,7 @@ export const translations = {
       heroTitle: "Welcoming with love, caring with dignity",
       heroText:
         "A warm and safe living environment for vulnerable people — seniors, individuals living with an intellectual disability / ASD or mental health challenges — and valuable support for their caregivers.",
+      heroCardSub: "Round-the-clock security & support",
       deviseLabel: "Our motto",
       devise:
         "\"Welcoming with love, caring with dignity, and opening paths to more peace, autonomy and belonging.\"",

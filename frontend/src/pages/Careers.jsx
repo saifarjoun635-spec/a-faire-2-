@@ -46,7 +46,7 @@ const Careers = () => {
       fd.append("position", form.position);
       fd.append("message", form.message);
       fd.append("cv", cv);
-      await axios.post(`${API}/careers`, fd, { headers: { "Content-Type": "multipart/form-data" } });
+      await axios.post(`${API}/careers`, fd);
       toast.success(c.success);
       setForm({ name: "", email: "", phone: "", position: "", message: "" });
       setCv(null);
