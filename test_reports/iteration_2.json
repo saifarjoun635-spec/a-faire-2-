@@ -1,0 +1,52 @@
+{
+  "summary": "Iteration 2 e2e: Careers (CV upload), Cookie consent (Law-25), Admin Applications tab, brand rename, and regressions on contact/donations. Backend pytest grew to 25 tests (100% pass) covering all new careers endpoints incl. oversized (>5MB) rejection and invalid content-type (image/png) rejection, admin token enforcement (header + query token), cv_data not leaked in listing, and PDF download (Content-Type application/pdf). Frontend Playwright validated /carrieres form submit with PDF -> success toast in FR; cookie banner appears on first visit, hidden on 'Tout refuser', persists rejection via localStorage 'ghap_cookie_consent' (no reappear after reload); admin login with ghap2025admin shows all 3 tabs and the submitted application with a working CV download link including ?token=ghap2025admin; navbar shows 'Groupe Havre d'Amour et de Paix' brand + 'Carrières' nav link; FR<->EN toggle still functional. Donation Stripe redirect verified via backend (URL contains checkout.stripe.com).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Home hero overlay card",
+        "issues": [
+          "When language is toggled to EN, the hero overlay card still shows French strings ('Sécurité & accompagnement permanents'). Wire it through useLanguage()/t for consistency."
+        ]
+      },
+      {
+        "screen": "/admin dashboard (carry-over from iter1)",
+        "issues": [
+          "Frequency labels 'Unique'/'Mensuel' and some admin headings are still rendered in French via t.donation.* keys; verify EN translations exist or hardcoded fallback strings."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Optional: localize the hero overlay card text on Home (Sécurité & accompagnement permanents) so EN visitors see the English equivalent.",
+    "Optional: review remaining hardcoded French strings (e.g., admin frequency labels) for full EN parity."
+  ],
+  "critical_code_review_comments": [
+    "server.py /api/careers stores cv as base64 in MongoDB. For documents close to 5MB this can bloat docs (base64 = +33%). Consider GridFS or object storage if applications scale.",
+    "server.py /api/careers/{id}/cv accepts token as a query string. This leaks the admin token in browser history, server logs, and Referer headers when the PDF is opened in a new tab. Prefer X-Admin-Token header or a short-lived signed URL. Currently acceptable because admin is the only consumer but flag for hardening.",
+    "server.py reads the entire upload into memory (cv.read()) before size check. A malicious >5MB upload still buffers in RAM. Consider streaming + early abort or FastAPI's UploadFile.size when available.",
+    "server.py validates content_type from the client; a client can spoof it. For PDF/DOC magic-byte sniffing would be more robust.",
+    "Careers.jsx posts FormData with an explicit 'Content-Type: multipart/form-data' header (line 49) — this prevents axios from auto-adding the boundary. It still works because the browser overrides when a FormData body is detected, but the explicit header is unnecessary and fragile; remove it.",
+    "Admin.jsx puts admin token in href query string for CV link — same exposure concern as above.",
+    "CookieConsent.jsx uses localStorage which fails in private/Safari ITP modes; consider try/catch around get/set."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py (added TestCareers class with 9 tests)"
+  ],
+  "success_rate": {"backend": "100% (25/25)", "frontend": "100% (all critical flows)"},
+  "test_credentials": "Admin token: ghap2025admin (backend/.env ADMIN_TOKEN). Stripe sk_test_emergent.",
+  "seed_data_creation": "Added TEST_-prefixed careers applications (small PDFs) and one TEST_Marie Lavoie application via UI. Plus a few additional TEST_ contact + donation rows. All safe to keep or purge by TEST_ prefix.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All iteration-2 features verified. Reuse /app/backend/tests/backend_test.py for regression (25 tests, ~3.4s). Careers endpoints: POST /api/careers (multipart), GET /api/careers (X-Admin-Token header), GET /api/careers/{id}/cv?token=. Frontend routes for testing: /carrieres, /admin (tabs: messages/donations/applications). Cookie consent key in localStorage: 'ghap_cookie_consent' (values: 'accepted' | 'rejected').",
+  "rca of the issue": "N/A — no failures."
+}

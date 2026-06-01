@@ -32,7 +32,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#556B2F] bg-[#EAE4D3] rounded-full px-4 py-2"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#4F8A2D] bg-[#EAE4D3] rounded-full px-4 py-2"
             >
               <Sparkles className="w-4 h-4" strokeWidth={1.8} /> {t.home.heroBadge}
             </motion.span>
@@ -61,14 +61,14 @@ const Home = () => {
               <Link
                 to="/services"
                 data-testid="hero-explore-btn"
-                className="inline-flex items-center gap-2 bg-[#556B2F] text-white hover:bg-[#425622] rounded-full px-8 py-4 transition-colors font-semibold"
+                className="inline-flex items-center gap-2 bg-[#4F8A2D] text-white hover:bg-[#3D6E22] rounded-full px-8 py-4 transition-colors font-semibold"
               >
                 {t.cta.explore} <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/don"
                 data-testid="hero-donate-btn"
-                className="inline-flex items-center gap-2 border-2 border-[#556B2F] text-[#556B2F] hover:bg-[#556B2F] hover:text-white rounded-full px-8 py-4 transition-colors font-semibold"
+                className="inline-flex items-center gap-2 border-2 border-[#4F8A2D] text-[#4F8A2D] hover:bg-[#4F8A2D] hover:text-white rounded-full px-8 py-4 transition-colors font-semibold"
               >
                 {t.cta.donate}
               </Link>
@@ -84,10 +84,10 @@ const Home = () => {
             <img
               src={MEDIA.caregiverHands}
               alt="Accompagnement bienveillant"
-              className="rounded-[2rem] w-full h-[380px] lg:h-[520px] object-cover shadow-[0_20px_60px_rgba(85,107,47,0.18)]"
+              className="rounded-[2rem] w-full h-[380px] lg:h-[520px] object-cover shadow-[0_20px_60px_rgba(79,138,45,0.18)]"
             />
-            <div className="absolute -bottom-6 -left-2 sm:left-6 bg-[#FAF9F6] rounded-3xl px-6 py-5 shadow-[0_12px_40px_rgba(85,107,47,0.15)] border border-[#D5D0C5] max-w-[230px]">
-              <p className="font-serif text-2xl text-[#556B2F]">24h / 7j</p>
+            <div className="absolute -bottom-6 -left-2 sm:left-6 bg-[#FAF9F6] rounded-3xl px-6 py-5 shadow-[0_12px_40px_rgba(79,138,45,0.15)] border border-[#D5D0C5] max-w-[230px]">
+              <p className="font-serif text-2xl text-[#4F8A2D]">24h / 7j</p>
               <p className="text-sm text-[#5C5C5C] mt-1">Sécurité & accompagnement permanents</p>
             </div>
           </motion.div>
@@ -95,7 +95,7 @@ const Home = () => {
       </section>
 
       {/* DEVISE */}
-      <section className="bg-[#556B2F] text-white">
+      <section className="bg-[#4F8A2D] text-white">
         <div className="max-w-5xl mx-auto px-5 md:px-8 py-20 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-[#D7E0C2] mb-6">{t.home.deviseLabel}</p>
           <Reveal>
@@ -115,9 +115,9 @@ const Home = () => {
             <Reveal key={s.title} delay={i * 0.08}>
               <div
                 data-testid={`home-service-card-${i}`}
-                className="h-full bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(85,107,47,0.08)] hover:-translate-y-2 transition-transform duration-300"
+                className="h-full bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(79,138,45,0.08)] hover:-translate-y-2 transition-transform duration-300"
               >
-                <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#EAE4D3] text-[#556B2F] mb-6">
+                <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#EAE4D3] text-[#4F8A2D] mb-6">
                   <s.icon className="w-7 h-7" strokeWidth={1.6} />
                 </span>
                 <h3 className="font-serif text-xl text-[#2C2C2C] mb-3">{s.title}</h3>
@@ -135,7 +135,7 @@ const Home = () => {
             <img
               src={MEDIA.smilingSeniors}
               alt="Moments de joie partagés"
-              className="rounded-[2rem] w-full h-[360px] lg:h-[460px] object-cover shadow-[0_16px_50px_rgba(85,107,47,0.18)]"
+              className="rounded-[2rem] w-full h-[360px] lg:h-[460px] object-cover shadow-[0_16px_50px_rgba(79,138,45,0.18)]"
             />
           </Reveal>
           <Reveal delay={0.15}>
@@ -144,7 +144,7 @@ const Home = () => {
             <Link
               to="/a-propos"
               data-testid="home-about-link"
-              className="inline-flex items-center gap-2 mt-8 text-[#556B2F] font-semibold hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 mt-8 text-[#4F8A2D] font-semibold hover:gap-3 transition-all"
             >
               {t.cta.learnMore} <ArrowRight className="w-4 h-4" />
             </Link>
@@ -153,7 +153,7 @@ const Home = () => {
       </section>
 
       {/* DONATE BANNER */}
-      <section className="relative overflow-hidden bg-[#C8795A] text-white">
+      <section className="relative overflow-hidden bg-[#E07A45] text-white">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-20 flex flex-col lg:flex-row items-center justify-between gap-10">
           <Reveal>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl max-w-2xl">{t.home.donateBannerTitle}</h2>
@@ -163,7 +163,7 @@ const Home = () => {
             <Link
               to="/don"
               data-testid="banner-donate-btn"
-              className="inline-flex items-center gap-2 bg-white text-[#B06548] hover:bg-[#F9F6F0] rounded-full px-9 py-4 transition-colors font-semibold whitespace-nowrap shadow-lg"
+              className="inline-flex items-center gap-2 bg-white text-[#C75F2E] hover:bg-[#F9F6F0] rounded-full px-9 py-4 transition-colors font-semibold whitespace-nowrap shadow-lg"
             >
               <Heart className="w-5 h-5" /> {t.cta.donate}
             </Link>

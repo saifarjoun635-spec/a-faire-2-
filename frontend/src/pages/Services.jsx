@@ -6,11 +6,11 @@ import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
 
 const PageHeader = ({ title, subtitle, image }) => (
-  <section className="relative overflow-hidden bg-[#556B2F]">
+  <section className="relative overflow-hidden bg-[#3D6E22]">
     {image && (
-      <div className="absolute inset-0 bg-cover bg-center opacity-25" style={{ backgroundImage: `url(${image})` }} aria-hidden />
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} aria-hidden />
     )}
-    <div className="absolute inset-0 bg-[#556B2F]/70" aria-hidden />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#3D6E22]/95 via-[#3D6E22]/75 to-[#3D6E22]/35" aria-hidden />
     <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
       <Reveal>
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{title}</h1>
@@ -23,10 +23,10 @@ const PageHeader = ({ title, subtitle, image }) => (
 const ListBlock = ({ icon: Icon, title, items, testid }) => (
   <div
     data-testid={testid}
-    className="bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(85,107,47,0.08)]"
+    className="bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(79,138,45,0.08)]"
   >
     <div className="flex items-center gap-3 mb-6">
-      <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#EAE4D3] text-[#556B2F]">
+      <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#EAE4D3] text-[#4F8A2D]">
         <Icon className="w-6 h-6" strokeWidth={1.6} />
       </span>
       <h3 className="font-serif text-2xl text-[#2C2C2C]">{title}</h3>
@@ -34,7 +34,7 @@ const ListBlock = ({ icon: Icon, title, items, testid }) => (
     <ul className="space-y-3">
       {items.map((it) => (
         <li key={it} className="flex items-start gap-3 text-[#5C5C5C]">
-          <Check className="w-5 h-5 text-[#556B2F] mt-0.5 shrink-0" strokeWidth={2} />
+          <Check className="w-5 h-5 text-[#4F8A2D] mt-0.5 shrink-0" strokeWidth={2} />
           <span>{it}</span>
         </li>
       ))}
@@ -61,8 +61,8 @@ const Services = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {mainServices.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06}>
-              <div className="h-full bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(85,107,47,0.08)] hover:-translate-y-1.5 transition-transform duration-300">
-                <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#556B2F] text-white mb-5">
+              <div className="h-full bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(79,138,45,0.08)] hover:-translate-y-1.5 transition-transform duration-300">
+                <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#4F8A2D] text-white mb-5">
                   <s.icon className="w-7 h-7" strokeWidth={1.6} />
                 </span>
                 <h3 className="font-serif text-2xl text-[#2C2C2C] mb-3">{s.title}</h3>
@@ -86,10 +86,10 @@ const Services = () => {
         <Reveal>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2C2C]">{t.contact.subtitle}</h2>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <Link to="/contact" className="bg-[#556B2F] text-white hover:bg-[#425622] rounded-full px-8 py-4 font-semibold transition-colors">
+            <Link to="/contact" className="bg-[#4F8A2D] text-white hover:bg-[#3D6E22] rounded-full px-8 py-4 font-semibold transition-colors">
               {t.cta.contact}
             </Link>
-            <Link to="/don" className="border-2 border-[#C8795A] text-[#C8795A] hover:bg-[#C8795A] hover:text-white rounded-full px-8 py-4 font-semibold transition-colors">
+            <Link to="/don" className="border-2 border-[#E07A45] text-[#E07A45] hover:bg-[#E07A45] hover:text-white rounded-full px-8 py-4 font-semibold transition-colors">
               {t.cta.donate}
             </Link>
           </div>

@@ -14,6 +14,7 @@ const Navbar = () => {
     { to: "/residences", label: t.nav.residences },
     { to: "/a-propos", label: t.nav.about },
     { to: "/regions", label: t.nav.regions },
+    { to: "/carrieres", label: t.nav.careers },
     { to: "/contact", label: t.nav.contact },
   ];
 
@@ -28,24 +29,24 @@ const Navbar = () => {
     >
       <nav className="max-w-7xl mx-auto px-5 md:px-8 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group" data-testid="navbar-logo">
-          <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#556B2F] text-white">
+          <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#4F8A2D] text-white">
             <Heart className="w-5 h-5" strokeWidth={1.8} />
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-serif text-sm sm:text-lg text-[#2C2C2C]">Havre d'Amour et de Paix</span>
-            <span className="text-[10px] sm:text-[11px] tracking-widest uppercase text-[#5C5C5C]">Groupe • OBNL</span>
+            <span className="font-serif text-sm sm:text-lg text-[#2C2C2C] leading-tight">Groupe Havre d'Amour et de Paix</span>
+            <span className="text-[10px] sm:text-[11px] tracking-widest uppercase text-[#5C5C5C]">Ressource Intermédiaire • Répit</span>
           </span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-5">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               data-testid={`nav-link-${l.to === "/" ? "home" : l.to.replace("/", "")}`}
               className={({ isActive }) =>
-                `font-body text-[15px] font-medium transition-colors ${
-                  isActive ? "text-[#556B2F]" : "text-[#2C2C2C] hover:text-[#556B2F]"
+                `font-body text-[14px] font-medium transition-colors ${
+                  isActive ? "text-[#4F8A2D]" : "text-[#2C2C2C] hover:text-[#4F8A2D]"
                 }`
               }
             >
@@ -58,7 +59,7 @@ const Navbar = () => {
           <button
             onClick={toggleLang}
             data-testid="lang-toggle-btn"
-            className="flex items-center gap-1.5 text-sm font-semibold text-[#2C2C2C] hover:text-[#556B2F] transition-colors border border-[#D5D0C5] rounded-full px-3 py-1.5"
+            className="flex items-center gap-1.5 text-sm font-semibold text-[#2C2C2C] hover:text-[#4F8A2D] transition-colors border border-[#D5D0C5] rounded-full px-3 py-1.5"
           >
             <Globe className="w-4 h-4" strokeWidth={1.8} />
             {lang === "fr" ? "EN" : "FR"}
@@ -67,7 +68,7 @@ const Navbar = () => {
           <Link
             to="/don"
             data-testid="nav-donate-btn"
-            className="hidden sm:inline-flex bg-[#C8795A] text-white hover:bg-[#B06548] rounded-full px-5 py-2.5 transition-colors font-body font-semibold text-sm shadow-md"
+            className="hidden sm:inline-flex bg-[#E07A45] text-white hover:bg-[#C75F2E] rounded-full px-5 py-2.5 transition-colors font-body font-semibold text-sm shadow-md"
           >
             {t.nav.donate}
           </Link>
@@ -92,7 +93,7 @@ const Navbar = () => {
                 to={l.to}
                 className={({ isActive }) =>
                   `py-3 font-body font-medium text-base ${
-                    isActive ? "text-[#556B2F]" : "text-[#2C2C2C]"
+                    isActive ? "text-[#4F8A2D]" : "text-[#2C2C2C]"
                   }`
                 }
               >
@@ -101,7 +102,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/don"
-              className="mt-2 text-center bg-[#C8795A] text-white rounded-full px-5 py-3 font-semibold"
+              className="mt-2 text-center bg-[#E07A45] text-white rounded-full px-5 py-3 font-semibold"
             >
               {t.nav.donate}
             </Link>

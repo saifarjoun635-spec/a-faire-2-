@@ -1,8 +1,10 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Header
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Header, UploadFile, File, Form
+from fastapi.responses import Response
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
+import base64
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr
@@ -92,6 +94,73 @@ async def list_contacts(x_admin_token: Optional[str] = Header(None)):
         raise HTTPException(status_code=401, detail="Unauthorized")
     docs = await db.contacts.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     return docs
+
+
+# ----- Careers / Job applications -----
+MAX_CV_SIZE = 5 * 1024 * 1024  # 5 MB
+ALLOWED_CV_TYPES = {
+    "application/pdf",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+}
+
+
+@api_router.post("/careers")
+async def create_application(
+    name: str = Form(...),
+    email: str = Form(...),
+    phone: str = Form(""),
+    position: str = Form(""),
+    message: str = Form(""),
+    cv: UploadFile = File(...),
+):
+    content = await cv.read()
+    if len(content) > MAX_CV_SIZE:
+        raise HTTPException(status_code=400, detail="CV file too large (max 5MB)")
+    if cv.content_type not in ALLOWED_CV_TYPES:
+        raise HTTPException(status_code=400, detail="Invalid file type (PDF, DOC, DOCX only)")
+
+    application = {
+        "id": str(uuid.uuid4()),
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "position": position,
+        "message": message,
+        "cv_filename": cv.filename,
+        "cv_content_type": cv.content_type,
+        "cv_data": base64.b64encode(content).decode("utf-8"),
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.applications.insert_one(application)
+    logger.info(f"New job application from {email}")
+    return {"id": application["id"], "message": "received"}
+
+
+@api_router.get("/careers")
+async def list_applications(x_admin_token: Optional[str] = Header(None)):
+    if not ADMIN_TOKEN or x_admin_token != ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    docs = await db.applications.find(
+        {}, {"_id": 0, "cv_data": 0}
+    ).sort("created_at", -1).to_list(1000)
+    return docs
+
+
+@api_router.get("/careers/{application_id}/cv")
+async def download_cv(application_id: str, token: Optional[str] = None):
+    if not ADMIN_TOKEN or token != ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    doc = await db.applications.find_one({"id": application_id})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Application not found")
+    data = base64.b64decode(doc["cv_data"])
+    filename = doc.get("cv_filename", "cv")
+    return Response(
+        content=data,
+        media_type=doc.get("cv_content_type", "application/octet-stream"),
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
 
 
 # ----- Donations / Stripe -----

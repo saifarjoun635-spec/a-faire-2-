@@ -9,9 +9,11 @@ import Residences from "@/pages/Residences";
 import About from "@/pages/About";
 import Regions from "@/pages/Regions";
 import Contact from "@/pages/Contact";
+import Careers from "@/pages/Careers";
 import Donation from "@/pages/Donation";
 import DonationResult from "@/pages/DonationResult";
 import Admin from "@/pages/Admin";
+import CookieConsent from "@/components/CookieConsent";
 
 function App() {
   return (
@@ -26,11 +28,13 @@ function App() {
             <Route path="/a-propos" element={<About />} />
             <Route path="/regions" element={<Regions />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/carrieres" element={<Careers />} />
             <Route path="/don" element={<Donation />} />
             <Route path="/don/merci" element={<DonationResult />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </Layout>
+        <CookieConsent />
       </BrowserRouter>
     </LanguageProvider>
   );

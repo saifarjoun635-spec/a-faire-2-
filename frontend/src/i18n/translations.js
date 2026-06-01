@@ -9,6 +9,7 @@ export const translations = {
       about: "À propos",
       regions: "Régions",
       contact: "Contact",
+      careers: "Carrières",
       donate: "Faire un don",
     },
     cta: {
@@ -155,10 +156,10 @@ export const translations = {
       subtitle:
         "Nous développons progressivement notre présence à travers le Québec et la région d'Ottawa, afin d'offrir nos services au plus près des familles.",
       cards: [
-        { name: "Montréal", status: "Résidence active", desc: "Notre point d'ancrage, au cœur du centre-ville, où nous accueillons les personnes en hébergement et en répit." },
-        { name: "Outaouais", status: "En développement", desc: "Un projet de milieu de vie et de répit pour répondre aux besoins grandissants de la région." },
-        { name: "Mauricie", status: "En développement", desc: "Le déploiement de services de proximité, en collaboration avec les familles et les partenaires locaux." },
-        { name: "Ottawa", status: "En développement", desc: "Une présence pensée pour les familles de la région, dans un esprit de continuité et de proximité." },
+        { name: "Montréal", status: "Résidence active", areas: "Montréal et ses environs : Laval, Rive-Sud, Rive-Nord", desc: "Notre point d'ancrage, au cœur du centre-ville de Montréal, où nous accueillons les personnes en hébergement et en répit." },
+        { name: "Outaouais", status: "En développement", areas: "Gatineau, Hull, Aylmer et les environs", desc: "Un projet de milieu de vie et de répit pour répondre aux besoins grandissants de la région de l'Outaouais." },
+        { name: "Mauricie", status: "En développement", areas: "Trois-Rivières, Shawinigan et les environs", desc: "Le déploiement de services de proximité en Mauricie, en collaboration avec les familles et les partenaires locaux." },
+        { name: "Ottawa", status: "En développement", areas: "Ottawa, Orléans, Nepean et la région de la capitale", desc: "Une présence pensée pour les familles de la région d'Ottawa, dans un esprit de continuité et de proximité." },
       ],
       statsTitle: "Notre portée",
       stats: [
@@ -222,6 +223,38 @@ export const translations = {
       success: "Merci ! Votre message a bien été envoyé.",
       error: "Une erreur est survenue. Veuillez réessayer.",
     },
+    careers: {
+      title: "Travailler avec nous",
+      subtitle:
+        "Vous souhaitez mettre votre cœur et vos compétences au service des personnes vulnérables ? Joignez notre équipe.",
+      intro: "Envoyez-nous votre candidature et votre CV. Nous vous recontacterons dès qu'une occasion correspond à votre profil.",
+      formName: "Nom complet",
+      formEmail: "Courriel",
+      formPhone: "Téléphone",
+      formPosition: "Poste recherché",
+      formMessage: "Message / Lettre de motivation",
+      formCv: "Joindre votre CV",
+      cvHint: "PDF, DOC ou DOCX — max 5 Mo",
+      chooseFile: "Choisir un fichier",
+      noFile: "Aucun fichier sélectionné",
+      send: "Envoyer ma candidature",
+      sending: "Envoi…",
+      success: "Merci ! Votre candidature a bien été envoyée.",
+      error: "Une erreur est survenue. Veuillez réessayer.",
+      cvRequired: "Veuillez joindre votre CV.",
+      cvTooBig: "Le fichier dépasse 5 Mo.",
+      whyTitle: "Pourquoi nous rejoindre",
+      why: [
+        "Un milieu de travail humain, bienveillant et respectueux",
+        "Un impact réel et concret dans la vie des personnes",
+        "Une équipe collaborative et solidaire",
+      ],
+    },
+    cookies: {
+      text: "Nous utilisons des témoins (cookies) pour améliorer votre expérience. Conformément à la Loi 25, vous pouvez accepter ou refuser. Voir notre politique de confidentialité.",
+      accept: "Tout accepter",
+      reject: "Tout refuser",
+    },
     footer: {
       rights: "Tous droits réservés.",
       quickLinks: "Liens rapides",
@@ -236,12 +269,13 @@ export const translations = {
       donations: "Dons",
       noMessages: "Aucun message.",
       noDonations: "Aucun don.",
+      noApplications: "Aucune candidature.",
       wrongToken: "Code d'accès invalide.",
     },
   },
 
   en: {
-    org: "Havre d'Amour et de Paix Group",
+    org: "Groupe Havre d'Amour et de Paix",
     tagline: "Intermediate Resource • Respite Centre • Integrated services",
     nav: {
       home: "Home",
@@ -250,6 +284,7 @@ export const translations = {
       about: "About",
       regions: "Regions",
       contact: "Contact",
+      careers: "Careers",
       donate: "Donate",
     },
     cta: {
@@ -396,10 +431,10 @@ export const translations = {
       subtitle:
         "We are gradually developing our presence across Quebec and the Ottawa area, to bring our services closer to families.",
       cards: [
-        { name: "Montreal", status: "Active residence", desc: "Our anchor point, in the heart of downtown, where we welcome people for housing and respite." },
-        { name: "Outaouais", status: "In development", desc: "A living and respite environment project to meet the region's growing needs." },
-        { name: "Mauricie", status: "In development", desc: "Rolling out local services, in collaboration with families and local partners." },
-        { name: "Ottawa", status: "In development", desc: "A presence designed for families in the region, in a spirit of continuity and closeness." },
+        { name: "Montreal", status: "Active residence", areas: "Montreal and surrounding areas: Laval, South Shore, North Shore", desc: "Our anchor point, in the heart of downtown Montreal, where we welcome people for housing and respite." },
+        { name: "Outaouais", status: "In development", areas: "Gatineau, Hull, Aylmer and surrounding areas", desc: "A living and respite environment project to meet the growing needs of the Outaouais region." },
+        { name: "Mauricie", status: "In development", areas: "Trois-Rivières, Shawinigan and surrounding areas", desc: "Rolling out local services in Mauricie, in collaboration with families and local partners." },
+        { name: "Ottawa", status: "In development", areas: "Ottawa, Orléans, Nepean and the capital region", desc: "A presence designed for families in the Ottawa region, in a spirit of continuity and closeness." },
       ],
       statsTitle: "Our reach",
       stats: [
@@ -463,6 +498,38 @@ export const translations = {
       success: "Thank you! Your message has been sent.",
       error: "An error occurred. Please try again.",
     },
+    careers: {
+      title: "Work with us",
+      subtitle:
+        "Would you like to put your heart and skills at the service of vulnerable people? Join our team.",
+      intro: "Send us your application and résumé. We will get back to you as soon as an opportunity matches your profile.",
+      formName: "Full name",
+      formEmail: "Email",
+      formPhone: "Phone",
+      formPosition: "Desired position",
+      formMessage: "Message / Cover letter",
+      formCv: "Attach your résumé",
+      cvHint: "PDF, DOC or DOCX — max 5 MB",
+      chooseFile: "Choose a file",
+      noFile: "No file selected",
+      send: "Send my application",
+      sending: "Sending…",
+      success: "Thank you! Your application has been sent.",
+      error: "An error occurred. Please try again.",
+      cvRequired: "Please attach your résumé.",
+      cvTooBig: "The file exceeds 5 MB.",
+      whyTitle: "Why join us",
+      why: [
+        "A human, caring and respectful workplace",
+        "A real, concrete impact on people's lives",
+        "A collaborative and supportive team",
+      ],
+    },
+    cookies: {
+      text: "We use cookies to improve your experience. In accordance with Law 25, you can accept or decline. See our privacy policy.",
+      accept: "Accept all",
+      reject: "Reject all",
+    },
     footer: {
       rights: "All rights reserved.",
       quickLinks: "Quick links",
@@ -477,6 +544,7 @@ export const translations = {
       donations: "Donations",
       noMessages: "No messages.",
       noDonations: "No donations.",
+      noApplications: "No applications.",
       wrongToken: "Invalid access code.",
     },
   },

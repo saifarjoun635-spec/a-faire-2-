@@ -161,6 +161,87 @@ class TestDonationCheckout:
         assert r.status_code == 404
 
 
+# ---------- Careers / Applications ----------
+class TestCareers:
+    _created_id = None
+
+    def test_create_application_valid_pdf(self, session):
+        s = requests.Session()  # multipart needs no JSON content-type
+        files = {
+            "cv": ("test_cv.pdf", b"%PDF-1.4\n%TEST_CV_CONTENT\n%%EOF", "application/pdf"),
+        }
+        data = {
+            "name": "TEST_Applicant",
+            "email": f"TEST_app_{uuid.uuid4().hex[:8]}@example.com",
+            "phone": "514-555-9999",
+            "position": "Préposé(e) aux bénéficiaires",
+            "message": "Candidature de test automatisée.",
+        }
+        r = s.post(f"{API}/careers", data=data, files=files)
+        assert r.status_code == 200, r.text
+        body = r.json()
+        assert "id" in body
+        assert body["message"] == "received"
+        TestCareers._created_id = body["id"]
+
+    def test_create_application_rejects_oversized(self, session):
+        s = requests.Session()
+        big = b"%PDF-1.4\n" + (b"A" * (5 * 1024 * 1024 + 100))
+        files = {"cv": ("big.pdf", big, "application/pdf")}
+        data = {"name": "TEST_Big", "email": "TEST_big@example.com"}
+        r = s.post(f"{API}/careers", data=data, files=files)
+        assert r.status_code == 400
+        assert "too large" in r.text.lower()
+
+    def test_create_application_rejects_invalid_type(self, session):
+        s = requests.Session()
+        files = {"cv": ("evil.png", b"\x89PNG\r\n\x1a\nFAKE", "image/png")}
+        data = {"name": "TEST_Bad", "email": "TEST_bad@example.com"}
+        r = s.post(f"{API}/careers", data=data, files=files)
+        assert r.status_code == 400
+        assert "invalid file type" in r.text.lower()
+
+    def test_list_applications_requires_token(self, session):
+        r = session.get(f"{API}/careers")
+        assert r.status_code == 401
+
+    def test_list_applications_wrong_token(self, session):
+        r = session.get(f"{API}/careers", headers={"X-Admin-Token": "wrong"})
+        assert r.status_code == 401
+
+    def test_list_applications_with_token_no_cv_data(self, session):
+        r = session.get(f"{API}/careers", headers={"X-Admin-Token": ADMIN_TOKEN})
+        assert r.status_code == 200
+        data = r.json()
+        assert isinstance(data, list)
+        assert len(data) >= 1
+        for ap in data[:5]:
+            assert "_id" not in ap
+            assert "cv_data" not in ap, "cv_data must not be exposed in listing"
+            assert "email" in ap
+            assert "cv_filename" in ap
+
+    def test_download_cv_requires_token(self, session):
+        if not TestCareers._created_id:
+            pytest.skip("no application id available")
+        r = requests.get(f"{API}/careers/{TestCareers._created_id}/cv")
+        assert r.status_code == 401
+
+    def test_download_cv_wrong_token(self, session):
+        if not TestCareers._created_id:
+            pytest.skip("no application id available")
+        r = requests.get(f"{API}/careers/{TestCareers._created_id}/cv?token=wrong")
+        assert r.status_code == 401
+
+    def test_download_cv_success(self, session):
+        if not TestCareers._created_id:
+            pytest.skip("no application id available")
+        r = requests.get(f"{API}/careers/{TestCareers._created_id}/cv?token={ADMIN_TOKEN}")
+        assert r.status_code == 200
+        assert r.headers.get("content-type", "").startswith("application/pdf")
+        assert b"%PDF" in r.content
+
+
 class TestDonationAdmin:
     def test_list_donations_requires_token(self, session):
         r = session.get(f"{API}/donations")
