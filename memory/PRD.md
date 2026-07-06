@@ -47,3 +47,14 @@ Coordonnées: 514-464-5880 · info@ghap-hlpg.ca · 245 boulevard Robert Bourassa
 - Nouvelles photos chaleureuses (Unsplash validées) : heroNurse, cozyHouse, elderlyDancing, homeCare, seniorsTalking, softLight. Photos caregiverHands (sombre) et abstractBg supprimées de media.js.
 - Cartes services avec photo en tête sur Accueil et Services. Section Régions inchangée (demande utilisateur).
 - Testé : iteration_3.json — 100% frontend, aucun bug, formulaires Contact/Carrières/Don OK, Stripe OK, Loi 25 OK, mobile OK.
+
+## Optimisation photos + UX (audit utilisateur) — Juin 2026 (itération 4)
+- Poids images accueil : 5,7 Mo → ~915 Ko. Lobby PNG 1,9 Mo → WebP locaux /images/lobby1.webp & lobby2.webp (~73 Ko, balance des blancs corrigée + crop droit photo 1). Pexels avec ?auto=compress&cs=tinysrgb&w=800. Unsplash avec w= params.
+- loading="lazy" + width/height explicites sur toutes les <img> (sauf héros en CSS bg).
+- Authenticité : carte « Hébergement (RI) » utilise les vraies photos du lobby (Accueil + Services). Image IA growthHands supprimée partout (Don, devise, bannières) → vraies photos humaines.
+- Crédits photo CC ajoutés sur les 4 cartes Régions (Vreee, Wladyslaw, Quintin Soloviev, Arctic.gnome) — conformité licences Wikimedia.
+- Téléphone cliquable (tel:) dans le header desktop + icône mobile + entrée menu mobile.
+- index.html : lang="fr", meta description unique FR, theme-color #1C743B. ⚠️ Nécessite restart frontend après modif de public/index.html (CRA ne hot-reload pas ce fichier).
+- Contraste : orange texte sur fond clair foncé à #AD4A1F (WCAG). Texte mort « prélèvement récurrent » (monthlyNote) vidé.
+- Testé : iteration_4.json — 9/9 critères PASS, 100 % frontend + formulaires/Stripe OK.
+- Reste côté utilisateur : domaine personnalisé à configurer avant lancement (via déploiement Emergent).
