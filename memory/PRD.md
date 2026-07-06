@@ -38,3 +38,12 @@ Coordonnées: 514-464-5880 · info@ghap-hlpg.ca · 245 boulevard Robert Bourassa
 - P2: Tax receipt generation for donations (OBNL).
 - P2: Per-residence pages as the network grows; CMS-style content editing.
 - P2: Multi-region landing content per region.
+
+## Refonte visuelle — Juin 2026 (itération 3)
+- Palette revue plus vivante : vert forêt #1C743B, orange chaud #E66C37, fond #FBF9F6, cartes blanches, texte #1B2A20 (remap global via sed sur tout src/).
+- Images de fond désormais VISIBLES sur chaque section (technique : image bg-cover + voile dégradé /75-/90 + contenu z-10) sur toutes les pages.
+- Héros de l'accueil : image pleine page (infirmière/aînée chaleureuse) avec effet ken-burns, texte blanc.
+- Badge "Organisme à but non lucratif" remplacé par « Au service des personnes vulnérables » / "Serving vulnerable people" (translations.js l.22/298).
+- Nouvelles photos chaleureuses (Unsplash validées) : heroNurse, cozyHouse, elderlyDancing, homeCare, seniorsTalking, softLight. Photos caregiverHands (sombre) et abstractBg supprimées de media.js.
+- Cartes services avec photo en tête sur Accueil et Services. Section Régions inchangée (demande utilisateur).
+- Testé : iteration_3.json — 100% frontend, aucun bug, formulaires Contact/Carrières/Don OK, Stripe OK, Loi 25 OK, mobile OK.
