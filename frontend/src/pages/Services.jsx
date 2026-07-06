@@ -6,11 +6,11 @@ import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
 
 const PageHeader = ({ title, subtitle, image }) => (
-  <section className="relative overflow-hidden bg-[#3D6E22]">
+  <section className="relative overflow-hidden bg-[#135229]">
     {image && (
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} aria-hidden />
     )}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#3D6E22]/95 via-[#3D6E22]/75 to-[#3D6E22]/35" aria-hidden />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#135229]/60 to-[#135229]/15" aria-hidden />
     <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
       <Reveal>
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{title}</h1>
@@ -23,18 +23,18 @@ const PageHeader = ({ title, subtitle, image }) => (
 const ListBlock = ({ icon: Icon, title, items, testid }) => (
   <div
     data-testid={testid}
-    className="bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(79,138,45,0.08)]"
+    className="bg-white rounded-3xl p-8 border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)]"
   >
     <div className="flex items-center gap-3 mb-6">
-      <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#EAE4D3] text-[#4F8A2D]">
+      <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E7F0E5] text-[#1C743B]">
         <Icon className="w-6 h-6" strokeWidth={1.6} />
       </span>
-      <h3 className="font-serif text-2xl text-[#2C2C2C]">{title}</h3>
+      <h3 className="font-serif text-2xl text-[#1B2A20]">{title}</h3>
     </div>
     <ul className="space-y-3">
       {items.map((it) => (
-        <li key={it} className="flex items-start gap-3 text-[#5C5C5C]">
-          <Check className="w-5 h-5 text-[#4F8A2D] mt-0.5 shrink-0" strokeWidth={2} />
+        <li key={it} className="flex items-start gap-3 text-[#4B5A51]">
+          <Check className="w-5 h-5 text-[#1C743B] mt-0.5 shrink-0" strokeWidth={2} />
           <span>{it}</span>
         </li>
       ))}
@@ -47,34 +47,45 @@ const Services = () => {
   const sl = t.servicesList;
 
   const mainServices = [
-    { icon: HomeIcon, ...sl.hebergement },
-    { icon: Sun, ...sl.repitJour },
-    { icon: Heart, ...sl.repitDomicile },
-    { icon: HeartPulse, ...sl.repitResidence },
+    { icon: HomeIcon, img: MEDIA.cozyHouse, ...sl.hebergement },
+    { icon: Sun, img: MEDIA.elderlyDancing, ...sl.repitJour },
+    { icon: Heart, img: MEDIA.homeCare, ...sl.repitDomicile },
+    { icon: HeartPulse, img: MEDIA.smilingSeniors, ...sl.repitResidence },
   ];
 
   return (
     <div data-testid="services-page">
       <PageHeader title={sl.title} subtitle={sl.subtitle} image={MEDIA.lobby1} />
 
-      <section className="max-w-7xl mx-auto px-5 md:px-8 py-20">
-        <div className="grid md:grid-cols-2 gap-6">
-          {mainServices.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.06}>
-              <div className="h-full bg-[#FAF9F6] rounded-3xl p-8 border border-[#D5D0C5] shadow-[0_8px_30px_rgba(79,138,45,0.08)] hover:-translate-y-1.5 transition-transform duration-300">
-                <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#4F8A2D] text-white mb-5">
-                  <s.icon className="w-7 h-7" strokeWidth={1.6} />
-                </span>
-                <h3 className="font-serif text-2xl text-[#2C2C2C] mb-3">{s.title}</h3>
-                <p className="text-[#5C5C5C] leading-relaxed">{s.desc}</p>
-              </div>
-            </Reveal>
-          ))}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/75" aria-hidden />
+        <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20">
+          <div className="grid md:grid-cols-2 gap-6">
+            {mainServices.map((s, i) => (
+              <Reveal key={s.title} delay={i * 0.06}>
+                <div className="group h-full bg-white rounded-3xl overflow-hidden border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)] hover:-translate-y-1.5 hover:shadow-[0_18px_50px_rgba(28,116,59,0.18)] transition-all duration-300">
+                  <div className="h-52 overflow-hidden">
+                    <img src={s.img} alt={s.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  </div>
+                  <div className="p-8">
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1C743B] text-white mb-5 -mt-16 relative z-10 border-4 border-white shadow-md">
+                      <s.icon className="w-7 h-7" strokeWidth={1.6} />
+                    </span>
+                    <h3 className="font-serif text-2xl text-[#1B2A20] mb-3">{s.title}</h3>
+                    <p className="text-[#4B5A51] leading-relaxed">{s.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="bg-[#EAE4D3]">
-        <div className="max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-8">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
+        <div className="absolute inset-0 bg-[#E7F0E5]/90" aria-hidden />
+        <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-8">
           <Reveal><ListBlock icon={Utensils} title={sl.everydayTitle} items={sl.everyday} testid="block-everyday" /></Reveal>
           <Reveal delay={0.1}><ListBlock icon={HeartHandshake} title={sl.careTitle} items={sl.care} testid="block-care" /></Reveal>
           <Reveal><ListBlock icon={Music} title={sl.leisureTitle} items={sl.leisure} testid="block-leisure" /></Reveal>
@@ -84,12 +95,12 @@ const Services = () => {
 
       <section className="max-w-5xl mx-auto px-5 md:px-8 py-20 text-center">
         <Reveal>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2C2C]">{t.contact.subtitle}</h2>
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2A20]">{t.contact.subtitle}</h2>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <Link to="/contact" className="bg-[#4F8A2D] text-white hover:bg-[#3D6E22] rounded-full px-8 py-4 font-semibold transition-colors">
+            <Link to="/contact" className="bg-[#1C743B] text-white hover:bg-[#135229] rounded-full px-8 py-4 font-semibold transition-colors">
               {t.cta.contact}
             </Link>
-            <Link to="/don" className="border-2 border-[#E07A45] text-[#E07A45] hover:bg-[#E07A45] hover:text-white rounded-full px-8 py-4 font-semibold transition-colors">
+            <Link to="/don" className="border-2 border-[#E66C37] text-[#E66C37] hover:bg-[#E66C37] hover:text-white rounded-full px-8 py-4 font-semibold transition-colors">
               {t.cta.donate}
             </Link>
           </div>

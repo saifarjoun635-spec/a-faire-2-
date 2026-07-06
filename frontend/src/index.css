@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-    --ghap-bg: #F9F6F0;
-    --ghap-surface: #FAF9F6;
-    --ghap-surface-alt: #EAE4D3;
-    --ghap-primary: #4F8A2D;
-    --ghap-primary-hover: #3D6E22;
-    --ghap-accent: #E07A45;
-    --ghap-accent-hover: #C75F2E;
-    --ghap-text: #2C2C2C;
-    --ghap-muted: #5C5C5C;
-    --ghap-border: #D5D0C5;
+    --ghap-bg: #FBF9F6;
+    --ghap-surface: #FFFFFF;
+    --ghap-surface-alt: #E7F0E5;
+    --ghap-primary: #1C743B;
+    --ghap-primary-hover: #135229;
+    --ghap-accent: #E66C37;
+    --ghap-accent-hover: #C85526;
+    --ghap-text: #1B2A20;
+    --ghap-muted: #4B5A51;
+    --ghap-border: #DBE4D8;
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 }
 
 ::selection {
-    background: var(--ghap-primary);
+    background: var(--ghap-accent);
     color: #fff;
 }
 
@@ -48,25 +48,25 @@ html {
 /* Shadcn token mapping to brand */
 @layer base {
     :root {
-        --background: 43 38% 96%;
-        --foreground: 0 0% 17%;
-        --card: 48 33% 97%;
-        --card-foreground: 0 0% 17%;
-        --popover: 48 33% 97%;
-        --popover-foreground: 0 0% 17%;
-        --primary: 98 51% 36%;
+        --background: 36 38% 97%;
+        --foreground: 140 22% 13%;
+        --card: 0 0% 100%;
+        --card-foreground: 140 22% 13%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 140 22% 13%;
+        --primary: 141 61% 28%;
         --primary-foreground: 0 0% 100%;
-        --secondary: 47 33% 87%;
-        --secondary-foreground: 0 0% 17%;
-        --muted: 47 33% 90%;
-        --muted-foreground: 0 0% 36%;
-        --accent: 20 71% 57%;
+        --secondary: 109 27% 92%;
+        --secondary-foreground: 140 22% 13%;
+        --muted: 109 27% 94%;
+        --muted-foreground: 145 9% 33%;
+        --accent: 18 78% 56%;
         --accent-foreground: 0 0% 100%;
         --destructive: 0 72% 51%;
         --destructive-foreground: 0 0% 100%;
-        --border: 43 17% 80%;
-        --input: 43 17% 80%;
-        --ring: 98 51% 36%;
+        --border: 105 18% 87%;
+        --input: 105 18% 87%;
+        --ring: 141 61% 28%;
         --radius: 0.75rem;
     }
 }
@@ -86,4 +86,12 @@ html {
 }
 .animate-float-soft {
     animation: float-soft 7s ease-in-out infinite;
+}
+
+@keyframes kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+.animate-kenburns {
+    animation: kenburns 20s ease-in-out infinite alternate;
 }

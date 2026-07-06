@@ -60,12 +60,12 @@ const Careers = () => {
 
   return (
     <div data-testid="careers-page">
-      <section className="relative overflow-hidden bg-[#3D6E22]">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.caregiverHands})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3D6E22]/95 via-[#3D6E22]/75 to-[#3D6E22]/35" aria-hidden />
+      <section className="relative overflow-hidden bg-[#135229]">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.elderlyDancing})` }} aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#135229]/60 to-[#135229]/15" aria-hidden />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
           <Reveal>
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest bg-white/15 rounded-full px-4 py-2 mb-6">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest bg-[#E66C37] rounded-full px-4 py-2 mb-6 shadow-lg">
               <Briefcase className="w-4 h-4" strokeWidth={1.8} /> {t.nav.careers}
             </span>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{c.title}</h1>
@@ -74,80 +74,84 @@ const Careers = () => {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-5 gap-14">
-        {/* Why join */}
-        <Reveal className="lg:col-span-2">
-          <h2 className="font-serif text-3xl text-[#2C2C2C] mb-6">{c.whyTitle}</h2>
-          <p className="text-[#5C5C5C] leading-relaxed mb-8">{c.intro}</p>
-          <ul className="space-y-5">
-            {c.why.map((w, i) => {
-              const Icon = whyIcons[i % whyIcons.length];
-              return (
-                <li key={w} className="flex items-start gap-4">
-                  <span className="flex items-center justify-center w-11 h-11 rounded-2xl bg-[#EAE4D3] text-[#4F8A2D] shrink-0">
-                    <Icon className="w-5 h-5" strokeWidth={1.7} />
-                  </span>
-                  <span className="text-[#2C2C2C] pt-2">{w}</span>
-                </li>
-              );
-            })}
-          </ul>
-          <img src={MEDIA.smilingSeniors} alt="" className="rounded-[2rem] w-full h-56 object-cover mt-10 shadow-[0_12px_40px_rgba(79,138,45,0.15)]" />
-        </Reveal>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/78" aria-hidden />
+        <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-5 gap-14">
+          {/* Why join */}
+          <Reveal className="lg:col-span-2">
+            <h2 className="font-serif text-3xl text-[#1B2A20] mb-6">{c.whyTitle}</h2>
+            <p className="text-[#4B5A51] leading-relaxed mb-8">{c.intro}</p>
+            <ul className="space-y-5">
+              {c.why.map((w, i) => {
+                const Icon = whyIcons[i % whyIcons.length];
+                return (
+                  <li key={w} className="flex items-start gap-4">
+                    <span className="flex items-center justify-center w-11 h-11 rounded-2xl bg-white border border-[#DBE4D8] text-[#1C743B] shadow-sm shrink-0">
+                      <Icon className="w-5 h-5" strokeWidth={1.7} />
+                    </span>
+                    <span className="text-[#1B2A20] pt-2">{w}</span>
+                  </li>
+                );
+              })}
+            </ul>
+            <img src={MEDIA.smilingSeniors} alt="" className="rounded-[2rem] w-full h-56 object-cover mt-10 shadow-[0_12px_40px_rgba(28,116,59,0.18)]" />
+          </Reveal>
 
-        {/* Form */}
-        <Reveal delay={0.12} className="lg:col-span-3">
-          <form
-            onSubmit={handleSubmit}
-            data-testid="careers-form"
-            className="bg-[#FAF9F6] rounded-3xl p-8 sm:p-10 border border-[#D5D0C5] shadow-[0_12px_40px_rgba(79,138,45,0.12)] space-y-6"
-          >
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label className="text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-2 block">{c.formName} *</label>
-                <input name="name" required value={form.name} onChange={handleChange} data-testid="career-name-input"
-                  className="bg-transparent border-b-2 border-[#D5D0C5] focus:border-[#4F8A2D] px-0 py-2 outline-none transition-colors w-full text-[#2C2C2C]" />
+          {/* Form */}
+          <Reveal delay={0.12} className="lg:col-span-3">
+            <form
+              onSubmit={handleSubmit}
+              data-testid="careers-form"
+              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#DBE4D8] shadow-[0_12px_40px_rgba(28,116,59,0.14)] space-y-6"
+            >
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="text-sm uppercase tracking-widest text-[#4B5A51] font-semibold mb-2 block">{c.formName} *</label>
+                  <input name="name" required value={form.name} onChange={handleChange} data-testid="career-name-input"
+                    className="bg-transparent border-b-2 border-[#DBE4D8] focus:border-[#1C743B] px-0 py-2 outline-none transition-colors w-full text-[#1B2A20]" />
+                </div>
+                <div>
+                  <label className="text-sm uppercase tracking-widest text-[#4B5A51] font-semibold mb-2 block">{c.formPhone}</label>
+                  <input name="phone" value={form.phone} onChange={handleChange} data-testid="career-phone-input"
+                    className="bg-transparent border-b-2 border-[#DBE4D8] focus:border-[#1C743B] px-0 py-2 outline-none transition-colors w-full text-[#1B2A20]" />
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="text-sm uppercase tracking-widest text-[#4B5A51] font-semibold mb-2 block">{c.formEmail} *</label>
+                  <input type="email" name="email" required value={form.email} onChange={handleChange} data-testid="career-email-input"
+                    className="bg-transparent border-b-2 border-[#DBE4D8] focus:border-[#1C743B] px-0 py-2 outline-none transition-colors w-full text-[#1B2A20]" />
+                </div>
+                <div>
+                  <label className="text-sm uppercase tracking-widest text-[#4B5A51] font-semibold mb-2 block">{c.formPosition}</label>
+                  <input name="position" value={form.position} onChange={handleChange} data-testid="career-position-input"
+                    className="bg-transparent border-b-2 border-[#DBE4D8] focus:border-[#1C743B] px-0 py-2 outline-none transition-colors w-full text-[#1B2A20]" />
+                </div>
               </div>
               <div>
-                <label className="text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-2 block">{c.formPhone}</label>
-                <input name="phone" value={form.phone} onChange={handleChange} data-testid="career-phone-input"
-                  className="bg-transparent border-b-2 border-[#D5D0C5] focus:border-[#4F8A2D] px-0 py-2 outline-none transition-colors w-full text-[#2C2C2C]" />
+                <label className="text-sm uppercase tracking-widest text-[#4B5A51] font-semibold mb-2 block">{c.formMessage}</label>
+                <textarea name="message" rows={4} value={form.message} onChange={handleChange} data-testid="career-message-input"
+                  className="bg-transparent border-b-2 border-[#DBE4D8] focus:border-[#1C743B] px-0 py-2 outline-none transition-colors w-full text-[#1B2A20] resize-none" />
               </div>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label className="text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-2 block">{c.formEmail} *</label>
-                <input type="email" name="email" required value={form.email} onChange={handleChange} data-testid="career-email-input"
-                  className="bg-transparent border-b-2 border-[#D5D0C5] focus:border-[#4F8A2D] px-0 py-2 outline-none transition-colors w-full text-[#2C2C2C]" />
-              </div>
-              <div>
-                <label className="text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-2 block">{c.formPosition}</label>
-                <input name="position" value={form.position} onChange={handleChange} data-testid="career-position-input"
-                  className="bg-transparent border-b-2 border-[#D5D0C5] focus:border-[#4F8A2D] px-0 py-2 outline-none transition-colors w-full text-[#2C2C2C]" />
-              </div>
-            </div>
-            <div>
-              <label className="text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-2 block">{c.formMessage}</label>
-              <textarea name="message" rows={4} value={form.message} onChange={handleChange} data-testid="career-message-input"
-                className="bg-transparent border-b-2 border-[#D5D0C5] focus:border-[#4F8A2D] px-0 py-2 outline-none transition-colors w-full text-[#2C2C2C] resize-none" />
-            </div>
 
-            <div>
-              <label className="text-sm uppercase tracking-widest text-[#5C5C5C] font-semibold mb-2 block">{c.formCv} *</label>
-              <input ref={fileRef} type="file" accept=".pdf,.doc,.docx" onChange={handleFile} className="hidden" id="cv-input" data-testid="career-cv-input" />
-              <label htmlFor="cv-input" className="flex items-center gap-3 cursor-pointer border-2 border-dashed border-[#D5D0C5] hover:border-[#4F8A2D] rounded-2xl px-5 py-4 transition-colors">
-                <Upload className="w-5 h-5 text-[#4F8A2D]" strokeWidth={1.8} />
-                <span className="text-[#2C2C2C] font-medium">{cv ? cv.name : c.chooseFile}</span>
-              </label>
-              <p className="text-xs text-[#5C5C5C] mt-2">{c.cvHint}</p>
-            </div>
+              <div>
+                <label className="text-sm uppercase tracking-widest text-[#4B5A51] font-semibold mb-2 block">{c.formCv} *</label>
+                <input ref={fileRef} type="file" accept=".pdf,.doc,.docx" onChange={handleFile} className="hidden" id="cv-input" data-testid="career-cv-input" />
+                <label htmlFor="cv-input" className="flex items-center gap-3 cursor-pointer border-2 border-dashed border-[#DBE4D8] hover:border-[#1C743B] rounded-2xl px-5 py-4 transition-colors bg-[#FBF9F6]">
+                  <Upload className="w-5 h-5 text-[#1C743B]" strokeWidth={1.8} />
+                  <span className="text-[#1B2A20] font-medium">{cv ? cv.name : c.chooseFile}</span>
+                </label>
+                <p className="text-xs text-[#4B5A51] mt-2">{c.cvHint}</p>
+              </div>
 
-            <button type="submit" disabled={sending} data-testid="career-submit-btn"
-              className="inline-flex items-center gap-2 bg-[#4F8A2D] text-white hover:bg-[#3D6E22] disabled:opacity-60 rounded-full px-8 py-4 font-semibold transition-colors">
-              <Send className="w-4 h-4" /> {sending ? c.sending : c.send}
-            </button>
-          </form>
-        </Reveal>
+              <button type="submit" disabled={sending} data-testid="career-submit-btn"
+                className="inline-flex items-center gap-2 bg-[#1C743B] text-white hover:bg-[#135229] disabled:opacity-60 rounded-full px-8 py-4 font-semibold transition-colors">
+                <Send className="w-4 h-4" /> {sending ? c.sending : c.send}
+              </button>
+            </form>
+          </Reveal>
+        </div>
       </section>
     </div>
   );

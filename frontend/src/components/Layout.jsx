@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F9F6F0]">
+    <div className="min-h-screen flex flex-col bg-[#FBF9F6]">
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />

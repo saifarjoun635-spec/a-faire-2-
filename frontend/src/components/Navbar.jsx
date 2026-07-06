@@ -24,17 +24,17 @@ const Navbar = () => {
 
   return (
     <header
-      className="sticky top-0 z-50 backdrop-blur-xl bg-[#F9F6F0]/85 border-b border-[#D5D0C5]/60"
+      className="sticky top-0 z-50 backdrop-blur-xl bg-[#FBF9F6]/85 border-b border-[#DBE4D8]/60"
       data-testid="main-navbar"
     >
       <nav className="max-w-7xl mx-auto px-5 md:px-8 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group" data-testid="navbar-logo">
-          <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#4F8A2D] text-white">
+          <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#1C743B] text-white">
             <Heart className="w-5 h-5" strokeWidth={1.8} />
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-serif text-sm sm:text-lg text-[#2C2C2C] leading-tight">Groupe Havre d'Amour et de Paix</span>
-            <span className="text-[10px] sm:text-[11px] tracking-widest uppercase text-[#5C5C5C]">Ressource Intermédiaire • Répit</span>
+            <span className="font-serif text-sm sm:text-lg text-[#1B2A20] leading-tight">Groupe Havre d'Amour et de Paix</span>
+            <span className="text-[10px] sm:text-[11px] tracking-widest uppercase text-[#4B5A51]">Ressource Intermédiaire • Répit</span>
           </span>
         </Link>
 
@@ -46,7 +46,7 @@ const Navbar = () => {
               data-testid={`nav-link-${l.to === "/" ? "home" : l.to.replace("/", "")}`}
               className={({ isActive }) =>
                 `font-body text-[14px] font-medium transition-colors ${
-                  isActive ? "text-[#4F8A2D]" : "text-[#2C2C2C] hover:text-[#4F8A2D]"
+                  isActive ? "text-[#1C743B]" : "text-[#1B2A20] hover:text-[#1C743B]"
                 }`
               }
             >
@@ -59,7 +59,7 @@ const Navbar = () => {
           <button
             onClick={toggleLang}
             data-testid="lang-toggle-btn"
-            className="flex items-center gap-1.5 text-sm font-semibold text-[#2C2C2C] hover:text-[#4F8A2D] transition-colors border border-[#D5D0C5] rounded-full px-3 py-1.5"
+            className="flex items-center gap-1.5 text-sm font-semibold text-[#1B2A20] hover:text-[#1C743B] transition-colors border border-[#DBE4D8] rounded-full px-3 py-1.5"
           >
             <Globe className="w-4 h-4" strokeWidth={1.8} />
             {lang === "fr" ? "EN" : "FR"}
@@ -68,13 +68,13 @@ const Navbar = () => {
           <Link
             to="/don"
             data-testid="nav-donate-btn"
-            className="hidden sm:inline-flex bg-[#E07A45] text-white hover:bg-[#C75F2E] rounded-full px-5 py-2.5 transition-colors font-body font-semibold text-sm shadow-md"
+            className="hidden sm:inline-flex bg-[#E66C37] text-white hover:bg-[#C85526] rounded-full px-5 py-2.5 transition-colors font-body font-semibold text-sm shadow-md"
           >
             {t.nav.donate}
           </Link>
 
           <button
-            className="lg:hidden text-[#2C2C2C]"
+            className="lg:hidden text-[#1B2A20]"
             onClick={() => setOpen((o) => !o)}
             data-testid="mobile-menu-toggle"
             aria-label="Menu"
@@ -85,7 +85,7 @@ const Navbar = () => {
       </nav>
 
       {open && (
-        <div className="lg:hidden border-t border-[#D5D0C5]/60 bg-[#F9F6F0]" data-testid="mobile-menu">
+        <div className="lg:hidden border-t border-[#DBE4D8]/60 bg-[#FBF9F6]" data-testid="mobile-menu">
           <div className="px-5 py-4 flex flex-col gap-1">
             {links.map((l) => (
               <NavLink
@@ -93,7 +93,7 @@ const Navbar = () => {
                 to={l.to}
                 className={({ isActive }) =>
                   `py-3 font-body font-medium text-base ${
-                    isActive ? "text-[#4F8A2D]" : "text-[#2C2C2C]"
+                    isActive ? "text-[#1C743B]" : "text-[#1B2A20]"
                   }`
                 }
               >
@@ -102,7 +102,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/don"
-              className="mt-2 text-center bg-[#E07A45] text-white rounded-full px-5 py-3 font-semibold"
+              className="mt-2 text-center bg-[#E66C37] text-white rounded-full px-5 py-3 font-semibold"
             >
               {t.nav.donate}
             </Link>

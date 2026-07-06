@@ -19,7 +19,7 @@ export const translations = {
       learnMore: "En savoir plus",
     },
     home: {
-      heroBadge: "Organisme à but non lucratif",
+      heroBadge: "Au service des personnes vulnérables",
       heroTitle: "Accueillir avec amour, accompagner avec dignité",
       heroText:
         "Un milieu de vie chaleureux et sécuritaire pour les personnes vulnérables — aînés, personnes vivant avec une DI-TSA ou des enjeux de santé mentale — et un soutien précieux pour leurs proches aidants.",
@@ -295,7 +295,7 @@ export const translations = {
       learnMore: "Learn more",
     },
     home: {
-      heroBadge: "Non-profit organization",
+      heroBadge: "Serving vulnerable people",
       heroTitle: "Welcoming with love, caring with dignity",
       heroText:
         "A warm and safe living environment for vulnerable people — seniors, individuals living with an intellectual disability / ASD or mental health challenges — and valuable support for their caregivers.",
