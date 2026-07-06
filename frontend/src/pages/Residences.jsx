@@ -39,7 +39,7 @@ const Residences = () => {
         <div className="absolute inset-0 bg-[#FBF9F6]/78" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
-            <img src={MEDIA.lobby2} alt="Espace de vie" className="rounded-[2rem] w-full h-[360px] lg:h-[460px] object-cover shadow-[0_16px_50px_rgba(28,116,59,0.22)]" />
+            <img src={MEDIA.lobby2} alt="Espace de vie" loading="lazy" width="1200" height="675" className="rounded-[2rem] w-full h-[360px] lg:h-[460px] object-cover shadow-[0_16px_50px_rgba(28,116,59,0.22)]" />
           </Reveal>
           <Reveal delay={0.15}>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2A20]">{res.introTitle}</h2>
@@ -50,7 +50,7 @@ const Residences = () => {
 
       {/* Features */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.cozyHouse})` }} aria-hidden />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.lobby1})` }} aria-hidden />
         <div className="absolute inset-0 bg-[#E7F0E5]/90" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20">
           <Reveal>
@@ -84,7 +84,7 @@ const Residences = () => {
           {photos.map((p, i) => (
             <Reveal key={i} delay={i * 0.07} className={p.span}>
               <div className="group h-full w-full overflow-hidden rounded-[2rem] shadow-[0_12px_40px_rgba(28,116,59,0.15)]">
-                <img src={p.src} alt={`Résidence ${i + 1}`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" data-testid={`residence-photo-${i}`} />
+                <img src={p.src} alt={`Résidence ${i + 1}`} loading="lazy" width="1200" height="776" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" data-testid={`residence-photo-${i}`} />
               </div>
             </Reveal>
           ))}

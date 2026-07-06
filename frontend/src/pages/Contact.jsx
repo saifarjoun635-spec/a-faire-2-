@@ -72,7 +72,7 @@ const Contact = () => {
                 </li>
               ))}
             </ul>
-            <img src={MEDIA.seniorsTalking} alt="" className="rounded-[2rem] w-full h-56 object-cover mt-10 shadow-[0_12px_40px_rgba(28,116,59,0.18)]" />
+            <img src={MEDIA.seniorsTalking} alt="" loading="lazy" width="1200" height="800" className="rounded-[2rem] w-full h-56 object-cover mt-10 shadow-[0_12px_40px_rgba(28,116,59,0.18)]" />
           </Reveal>
 
           <Reveal delay={0.12}>

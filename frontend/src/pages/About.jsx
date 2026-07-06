@@ -79,7 +79,7 @@ const About = () => {
               return (
                 <Reveal key={v.name} delay={(i % 4) * 0.08}>
                   <div className="h-full bg-white rounded-3xl p-7 border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)] hover:-translate-y-2 hover:shadow-[0_18px_50px_rgba(28,116,59,0.18)] transition-all duration-300">
-                    <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E66C37]/15 text-[#E66C37] mb-5">
+                    <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E66C37]/15 text-[#C85526] mb-5">
                       <Icon className="w-6 h-6" strokeWidth={1.6} />
                     </span>
                     <h3 className="font-serif text-xl text-[#1B2A20] mb-2">{v.name}</h3>
@@ -94,7 +94,7 @@ const About = () => {
 
       {/* Engagement */}
       <section className="relative overflow-hidden text-white">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.growthHands})` }} aria-hidden />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.smilingSeniors})` }} aria-hidden />
         <div className="absolute inset-0 bg-[#135229]/85" aria-hidden />
         <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 py-20 text-center">
           <Reveal>

@@ -54,7 +54,7 @@ const Donation = () => {
   return (
     <div data-testid="donation-page">
       <section className="relative overflow-hidden bg-[#E66C37] text-white">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.growthHands})` }} aria-hidden />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-r from-[#C85526]/92 via-[#C85526]/65 to-[#C85526]/20" aria-hidden />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-24">
           <Reveal>
@@ -134,7 +134,7 @@ const Donation = () => {
           {/* Impact */}
           <Reveal delay={0.15} className="lg:col-span-2">
             <div className="sticky top-28">
-              <img src={MEDIA.seniorsTalking} alt="" className="rounded-[2rem] w-full h-56 object-cover mb-8 shadow-[0_12px_40px_rgba(28,116,59,0.18)]" />
+              <img src={MEDIA.seniorsTalking} alt="" loading="lazy" width="1200" height="800" className="rounded-[2rem] w-full h-56 object-cover mb-8 shadow-[0_12px_40px_rgba(28,116,59,0.18)]" />
               <h3 className="font-serif text-2xl text-[#1B2A20] mb-5">{d.impactTitle}</h3>
               <ul className="space-y-4">
                 {d.impacts.map((im) => (

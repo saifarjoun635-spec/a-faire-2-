@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Heart, Globe } from "lucide-react";
+import { Menu, X, Heart, Globe, Phone } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { CONTACT_INFO } from "../constants/media";
 
 const Navbar = () => {
   const { t, lang, toggleLang } = useLanguage();
@@ -56,6 +57,22 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          <a
+            href={CONTACT_INFO.phoneHref}
+            data-testid="nav-phone-link"
+            className="hidden md:inline-flex items-center gap-1.5 text-sm font-bold text-[#1C743B] hover:text-[#135229] transition-colors"
+          >
+            <Phone className="w-4 h-4" strokeWidth={2} />
+            {CONTACT_INFO.phone}
+          </a>
+          <a
+            href={CONTACT_INFO.phoneHref}
+            data-testid="nav-phone-link-mobile"
+            aria-label={`Appeler ${CONTACT_INFO.phone}`}
+            className="md:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[#1C743B] text-white"
+          >
+            <Phone className="w-4 h-4" strokeWidth={2} />
+          </a>
           <button
             onClick={toggleLang}
             data-testid="lang-toggle-btn"
@@ -100,6 +117,13 @@ const Navbar = () => {
                 {l.label}
               </NavLink>
             ))}
+            <a
+              href={CONTACT_INFO.phoneHref}
+              data-testid="mobile-menu-phone-link"
+              className="mt-2 inline-flex items-center justify-center gap-2 border-2 border-[#1C743B] text-[#1C743B] rounded-full px-5 py-3 font-semibold"
+            >
+              <Phone className="w-4 h-4" strokeWidth={2} /> {CONTACT_INFO.phone}
+            </a>
             <Link
               to="/don"
               className="mt-2 text-center bg-[#E66C37] text-white rounded-full px-5 py-3 font-semibold"

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, ArrowRight, Building2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { MEDIA } from "../constants/media";
+import { MEDIA, REGION_CREDITS } from "../constants/media";
 import { Reveal } from "../components/Reveal";
 
 const cardImages = [MEDIA.cityMontreal, MEDIA.cityOutaouais, MEDIA.cityMauricie, MEDIA.cityOttawa];
@@ -38,7 +38,10 @@ const Regions = () => {
                 className="group h-full bg-[#FFFFFF] rounded-[2rem] overflow-hidden border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.08)] hover:-translate-y-1.5 transition-transform duration-300"
               >
                 <div className="relative h-52 overflow-hidden">
-                  <img src={cardImages[i % cardImages.length]} alt={city.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src={cardImages[i % cardImages.length]} alt={city.name} loading="lazy" width="960" height="640" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <span className="absolute bottom-2 right-3 text-[10px] text-white/90 bg-black/40 rounded px-1.5 py-0.5" data-testid={`region-photo-credit-${i}`}>
+                    {REGION_CREDITS[i % REGION_CREDITS.length]}
+                  </span>
                   <span className={`absolute top-4 left-4 text-xs font-semibold px-3 py-1.5 rounded-full ${city.status.toLowerCase().includes("active") ? "bg-[#1C743B] text-white" : "bg-[#E66C37] text-white"}`}>
                     {city.status}
                   </span>
@@ -59,7 +62,7 @@ const Regions = () => {
           ))}
         </div>
         <Reveal delay={0.2}>
-          <p className="text-center font-serif text-xl text-[#E66C37] mt-12">{r.future}</p>
+          <p className="text-center font-serif text-xl text-[#AD4A1F] mt-12">{r.future}</p>
         </Reveal>
       </section>
 

@@ -1,0 +1,73 @@
+{
+  "summary": "Iteration 4 (performance + authenticity + a11y pass) - full frontend verification against the 9 acceptance criteria. All 9 checks PASS. Backend endpoints (POST /api/contact, POST /api/donations checkout) validated end-to-end and functional. Note: dev server was serving stale index.html initially (still had lang=en, theme=#000000, duplicate meta desc, 'A product of emergent.sh'). Restarting the frontend supervisor picked up the new /app/frontend/public/index.html. Please ensure the built/served index.html is refreshed on deploy.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_matrix": {
+    "PERF_home_images": {
+      "status": "PASS",
+      "details": "Home has 5 <img> tags. Lobby served locally as /images/lobby2.webp (70,982 bytes, image/webp, HTTP 200). Pexels URL includes ?auto=compress&cs=tinysrgb&w=800 and served as image/avif at 49,277 bytes. All Unsplash URLs include w=800/w=1200 params (largest was heroNurse at 172KB w=1600, softLight 229KB w=1600). Total home image transfer measured ~915KB (well under 1.5MB threshold, deduped)."
+    },
+    "LAZY_LOADING": {
+      "status": "PASS",
+      "details": "All <img> elements checked across /, /services, /residences, /a-propos, /regions, /carrieres, /contact, /don have loading='lazy' AND explicit width+height attributes. Zero missing on all pages (0/5, 0/4, 0/5, 0/0, 0/4, 0/1, 0/1, 0/1)."
+    },
+    "AUTHENTICITY_RI_card": {
+      "status": "PASS",
+      "details": "Home RI card <img> src = /images/lobby2.webp (naturalWidth 1200). Services RI card <img> src = /images/lobby1.webp (naturalWidth 1200). No stock suburban house image."
+    },
+    "AI_IMAGE_REMOVED": {
+      "status": "PASS",
+      "details": "'growthHands' string not present in document.body.innerHTML on Home, About, or Donation pages (grep also confirms zero references in /app/frontend/src)."
+    },
+    "REGIONS_CREDITS": {
+      "status": "PASS",
+      "details": "All 4 region-photo-credit-[0..3] testids present with correct text: 'Photo : Vreee — CC BY-SA 4.0', 'Photo : Wladyslaw — CC BY 3.0', 'Photo : Quintin Soloviev — CC BY 4.0', 'Photo : Arctic.gnome — CC BY 2.5'. All 4 Wikimedia city images load with naturalWidth = 960."
+    },
+    "HEADER_PHONE": {
+      "status": "PASS",
+      "details": "Desktop: [data-testid=nav-phone-link] href='tel:+15144645880' text='514-464-5880' visible on all pages. Mobile (390px viewport): [data-testid=nav-phone-link-mobile] visible with correct tel: href. Mobile menu opens and [data-testid=mobile-menu-phone-link] is visible with the same tel: href."
+    },
+    "HTML_head": {
+      "status": "PASS",
+      "details": "<html lang='fr'>. Exactly ONE meta[name=description] with French text 'Ressource Intermédiaire et Centre de Répit...'. theme-color = #1C743B. 'A product of emergent.sh' NOT visible in body text. Verified BOTH via raw HTML source (curl) and via runtime DOM (Playwright). Required a supervisor restart of frontend to pick up the new file (previously served the stale copy)."
+    },
+    "NO_REGRESSION": {
+      "status": "PASS",
+      "details": "All 9 routes (/, /services, /residences, /a-propos, /regions, /carrieres, /contact, /don, /admin) render. Zero console errors captured across the entire session. No broken images (naturalWidth > 0 on every <img>). Contact form POST /api/contact -> 200 with persisted body (id + all fields). FR/EN toggle button present at [data-testid=lang-toggle-btn] and functional."
+    },
+    "DONATION_recurring_text_and_stripe": {
+      "status": "PASS",
+      "details": "No 'prélèvement récurrent' or 'recurring withdrawal' text found on /don (body innerText scan). Donate flow: selecting amount-25 preset then clicking [data-testid=donate-submit-btn] triggers backend call and returns a Stripe checkout URL (r.stripe.com/...) with HTTP 200. Stripe payment NOT completed (as instructed)."
+    }
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_4.json"
+  ],
+  "action_items": [
+    "Non-blocking: ensure production deploy pipeline actually serves the updated /app/frontend/public/index.html. In the preview env the dev server initially served a stale HTML (lang=en, theme=#000000, duplicate 'A product of emergent.sh' meta) until 'sudo supervisorctl restart frontend' was run. If your CI/CD caches CRA public assets, please invalidate them or rebuild."
+  ],
+  "critical_code_review_comments": [
+    "index.html changes are not always picked up by the CRA dev server if the process was started before the file was edited - a restart or clean rebuild is required. Consider documenting this in memory/PRD or the deploy scripts.",
+    "media.js correctly localizes heavy lobby PNGs to /images/*.webp (~70-75KB each) — good performance win.",
+    "Region credits are hard-coded in a parallel array (REGION_CREDITS) to REGION_KEYS order — a small refactor to key credits by region slug would prevent silent misalignment if the array order changes in the future.",
+    "Some Unsplash hero images (heroNurse w=1600 ~172KB, softLight w=1600 ~229KB) are still fairly heavy; if home LCP is a concern, consider dropping to w=1200 or serving via a CDN with automatic AVIF/WebP negotiation."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "test_credentials": "Admin token: ghap2025admin (read from /app/memory/test_credentials.md - not needed for this iteration as admin page only rendered, no auth flow tested)",
+  "seed_data_creation": "One TEST contact form submission was POSTed (name=TEST User, email=test@example.com) - contact id 6a1dfc37-0046-4811-82ec-baa9c0b65f53. Can be cleaned by admin if desired.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 9 acceptance criteria for iteration 4 (perf/authenticity/a11y) verified PASSING against the deployed URL. If further changes are made to /app/frontend/public/index.html, remember to restart the frontend supervisor to pick them up. Contact form test submits create real DB rows (prefix future test data with TEST_).",
+  "rca of the issue": "N/A - no issues found. Only observation: index.html changes required a frontend supervisor restart. RCA: CRA dev server does not always hot-reload changes to public/index.html; the served HTML is bundled at startup. Mitigation: sudo supervisorctl restart frontend after editing public/index.html."
+}

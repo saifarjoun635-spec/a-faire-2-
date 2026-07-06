@@ -10,7 +10,7 @@ const Home = () => {
   const { t } = useLanguage();
 
   const services = [
-    { icon: HomeIcon, img: MEDIA.cozyHouse, ...t.servicesList.hebergement },
+    { icon: HomeIcon, img: MEDIA.lobby2, ...t.servicesList.hebergement },
     { icon: Sun, img: MEDIA.elderlyDancing, ...t.servicesList.repitJour },
     { icon: Heart, img: MEDIA.homeCare, ...t.servicesList.repitDomicile },
     { icon: HeartPulse, img: MEDIA.smilingSeniors, ...t.servicesList.repitResidence },
@@ -88,8 +88,8 @@ const Home = () => {
 
       {/* DEVISE */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.growthHands})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#135229]/85" aria-hidden />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
+        <div className="absolute inset-0 bg-[#135229]/88" aria-hidden />
         <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-8 py-20 text-center text-white">
           <p className="text-xs uppercase tracking-[0.3em] text-[#BFE3C8] mb-6">{t.home.deviseLabel}</p>
           <Reveal>
@@ -115,7 +115,7 @@ const Home = () => {
                   className="group h-full bg-white rounded-3xl overflow-hidden border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)] hover:-translate-y-2 hover:shadow-[0_18px_50px_rgba(28,116,59,0.18)] transition-all duration-300"
                 >
                   <div className="h-44 overflow-hidden">
-                    <img src={s.img} alt={s.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={s.img} alt={s.title} loading="lazy" width="800" height="533" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <div className="p-7">
                     <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E7F0E5] text-[#1C743B] mb-5 -mt-14 relative z-10 border-4 border-white shadow-md">
@@ -140,6 +140,9 @@ const Home = () => {
             <img
               src={MEDIA.seniorsTalking}
               alt="Moments de joie partagés"
+              loading="lazy"
+              width="1200"
+              height="800"
               className="rounded-[2rem] w-full h-[360px] lg:h-[460px] object-cover shadow-[0_16px_50px_rgba(28,116,59,0.22)]"
             />
           </Reveal>
@@ -159,7 +162,7 @@ const Home = () => {
 
       {/* DONATE BANNER */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.growthHands})` }} aria-hidden />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-r from-[#C85526]/92 to-[#E66C37]/85" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 flex flex-col lg:flex-row items-center justify-between gap-10 text-white">
           <Reveal>

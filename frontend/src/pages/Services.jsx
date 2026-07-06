@@ -47,7 +47,7 @@ const Services = () => {
   const sl = t.servicesList;
 
   const mainServices = [
-    { icon: HomeIcon, img: MEDIA.cozyHouse, ...sl.hebergement },
+    { icon: HomeIcon, img: MEDIA.lobby1, ...sl.hebergement },
     { icon: Sun, img: MEDIA.elderlyDancing, ...sl.repitJour },
     { icon: Heart, img: MEDIA.homeCare, ...sl.repitDomicile },
     { icon: HeartPulse, img: MEDIA.smilingSeniors, ...sl.repitResidence },
@@ -66,7 +66,7 @@ const Services = () => {
               <Reveal key={s.title} delay={i * 0.06}>
                 <div className="group h-full bg-white rounded-3xl overflow-hidden border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)] hover:-translate-y-1.5 hover:shadow-[0_18px_50px_rgba(28,116,59,0.18)] transition-all duration-300">
                   <div className="h-52 overflow-hidden">
-                    <img src={s.img} alt={s.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={s.img} alt={s.title} loading="lazy" width="1200" height="800" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <div className="p-8">
                     <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1C743B] text-white mb-5 -mt-16 relative z-10 border-4 border-white shadow-md">
@@ -100,7 +100,7 @@ const Services = () => {
             <Link to="/contact" className="bg-[#1C743B] text-white hover:bg-[#135229] rounded-full px-8 py-4 font-semibold transition-colors">
               {t.cta.contact}
             </Link>
-            <Link to="/don" className="border-2 border-[#E66C37] text-[#E66C37] hover:bg-[#E66C37] hover:text-white rounded-full px-8 py-4 font-semibold transition-colors">
+            <Link to="/don" className="border-2 border-[#AD4A1F] text-[#AD4A1F] hover:bg-[#AD4A1F] hover:text-white rounded-full px-8 py-4 font-semibold transition-colors">
               {t.cta.donate}
             </Link>
           </div>

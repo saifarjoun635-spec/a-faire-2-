@@ -185,8 +185,7 @@ export const translations = {
       donorEmail: "Votre courriel (optionnel)",
       donateNow: "Donner",
       processing: "Traitement…",
-      monthlyNote:
-        "Le don mensuel est traité comme une contribution. Notre équipe vous contactera pour la mise en place du prélèvement récurrent.",
+      monthlyNote: "",
       secure: "Paiement sécurisé par Stripe",
       impactTitle: "Votre impact",
       impacts: [
@@ -461,8 +460,7 @@ export const translations = {
       donorEmail: "Your email (optional)",
       donateNow: "Donate",
       processing: "Processing…",
-      monthlyNote:
-        "Monthly gifts are processed as a contribution. Our team will contact you to set up the recurring withdrawal.",
+      monthlyNote: "",
       secure: "Secure payment by Stripe",
       impactTitle: "Your impact",
       impacts: [
