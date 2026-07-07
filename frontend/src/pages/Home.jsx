@@ -25,9 +25,9 @@ const Home = () => {
           style={{ backgroundImage: `url(${MEDIA.heroInterior})` }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#0C2415]/55 to-[#0C2415]/20" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/60 via-[#0C2415]/15 to-transparent" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24 lg:py-28 w-full">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl bg-[#0C2415]/55 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl">
             <motion.span
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}

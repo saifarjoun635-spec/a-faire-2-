@@ -1,0 +1,31 @@
+{
+  "summary": "Frontend-only verification of the two bug fixes on Home hero (crisp image + glass-morphism text panel) and Residences gallery (elderlyDancing photo removed). Both fixes verified working. No regressions detected.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_7.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Home.jsx: Clean implementation — glass-morphism panel isolates blur to the text container only, keeping the hero image sharp. Left-only gradient (from-[#0C2415]/60 via-[#0C2415]/15 to-transparent) is well-tuned.",
+    "Residences.jsx: photos[] array cleanly reduced to 3 entries; the conditional fit/bg logic was properly stripped from the render (simple object-cover + p.pos). No orphan letterbox styles remain.",
+    "Minor code quality (non-blocking): Residences gallery <img> uses key={i} in map — safe here since photos array is static, but keying on p.src would be more idiomatic."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "N/A (skipped as requested)",
+    "frontend": "100%"
+  },
+  "seed_data_creation": "None required",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "BUG 1 (Home hero crisp): VERIFIED — /images/hero-lobby.webp returns HTTP 200, 325512 bytes. Glass-morphism panel present with exact classes 'max-w-2xl bg-[#0C2415]/55 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl'. Gradient veil is left-only ('absolute inset-0 bg-gradient-to-r from-[#0C2415]/60 via-[#0C2415]/15 to-transparent'). Screenshot confirms hero image is crisp on the right ~60% (plants, olive couches, black wood panels, rattan lights, illuminated wall circle all visible sharp). Orange badge 'AU SERVICE DES PERSONNES VULNÉRABLES' and 24h/7j card both visible inside the glass panel. CTAs hero-explore-btn and hero-donate-btn visible & positioned inside the panel (bbox x=393 y=647). BUG 2 (Residences gallery): VERIFIED — exactly 3 photos rendered with data-testid residence-photo-0 (lobby1.webp), residence-photo-1 (lobby2.webp), residence-photo-2 (pexels smiling seniors). residence-photo-3 does NOT exist. No img with src containing 'elderly' or 'dancing'. No bg-[#0C2415] letterbox ancestor found in gallery. REGRESSION: 0 console errors/warnings on both pages.",
+  "rca of the issue": "N/A — both bugs already fixed and confirmed working end-to-end on the preview URL."
+}
