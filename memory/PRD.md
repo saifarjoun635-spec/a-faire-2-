@@ -58,3 +58,16 @@ Coordonnées: 514-464-5880 · info@ghap-hlpg.ca · 245 boulevard Robert Bourassa
 - Contraste : orange texte sur fond clair foncé à #AD4A1F (WCAG). Texte mort « prélèvement récurrent » (monthlyNote) vidé.
 - Testé : iteration_4.json — 9/9 critères PASS, 100 % frontend + formulaires/Stripe OK.
 - Reste côté utilisateur : domaine personnalisé à configurer avant lancement (via déploiement Emergent).
+
+
+## Nettoyage des images mal cadrées — Février 2026 (itération 6)
+- Retrait des images de fond où les visages étaient coupés (plainte utilisateur : "faces cropped mid-image").
+- Sections converties en dégradés sobres (vert forêt → orange chaud, avec accents radiaux) :
+  - Home : Hero, Notre devise, Bannière don « Votre générosité transforme des vies »
+  - Services : Hero + section blocs (fond crème)
+  - Résidences : Hero + section Loisirs & activités (dégradé orange chaud)
+  - À propos : Hero + section Nos engagements (fond vert clair) + section Notre engagement (dégradé vert)
+  - Régions : Hero
+  - Carrières : Hero
+- Photos conservées (bien cadrées) : cartes services (grille), image "Un véritable milieu de vie" (lobby2), galerie résidences, photos de ville (Régions), image de la section "Pourquoi nous rejoindre" (Carrières).
+- Photo d'enfant (>5 ans) NON ajoutée : reportée pour éviter tout nouveau problème de cadrage — à préciser avec l'utilisateur (image fournie ou requête spécifique).

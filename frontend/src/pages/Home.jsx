@@ -19,13 +19,19 @@ const Home = () => {
   return (
     <div data-testid="home-page">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[86vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[86vh] flex items-center bg-[#0C2415]">
         <div
-          className="absolute inset-0 bg-cover bg-center animate-kenburns"
-          style={{ backgroundImage: `url(${MEDIA.heroNurse})` }}
+          className="absolute inset-0 bg-gradient-to-br from-[#0C2415] via-[#135229] to-[#1C743B]"
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/80 via-[#0C2415]/40 to-transparent" aria-hidden />
+        <div
+          className="absolute inset-0 opacity-[0.18] mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 20%, #E66C37 0%, transparent 45%), radial-gradient(circle at 80% 70%, #F0B27A 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24 lg:py-28 w-full">
           <div className="max-w-2xl">
             <motion.span
@@ -87,15 +93,19 @@ const Home = () => {
       </section>
 
       {/* DEVISE */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#0C2415]/30" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#135229] via-[#1C743B] to-[#0C2415]">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 15% 30%, #E66C37 0%, transparent 40%), radial-gradient(circle at 85% 80%, #BFE3C8 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-8 py-20 text-center text-white">
           <Reveal>
-            <div className="bg-[#0C2415]/75 backdrop-blur-sm rounded-3xl px-6 sm:px-12 py-10 shadow-2xl">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#BFE3C8] mb-6">{t.home.deviseLabel}</p>
-              <p className="font-serif text-2xl sm:text-3xl lg:text-4xl leading-relaxed">{t.home.devise}</p>
-            </div>
+            <p className="text-xs uppercase tracking-[0.3em] text-[#BFE3C8] mb-6">{t.home.deviseLabel}</p>
+            <p className="font-serif text-2xl sm:text-3xl lg:text-4xl leading-relaxed max-w-4xl mx-auto">{t.home.devise}</p>
           </Reveal>
         </div>
       </section>
@@ -165,15 +175,19 @@ const Home = () => {
       </section>
 
       {/* DONATE BANNER */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#7A2E0E]/55 via-[#A8431D]/40 to-[#C85526]/20" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#7A2E0E] via-[#C85526] to-[#E66C37]">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 80% 20%, #F0B27A 0%, transparent 45%), radial-gradient(circle at 15% 85%, #F9E5D0 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 flex flex-col lg:flex-row items-center justify-between gap-10 text-white">
           <Reveal>
-            <div className="bg-[#5E2209]/70 backdrop-blur-sm rounded-3xl p-8 lg:p-10 shadow-2xl">
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl max-w-2xl">{t.home.donateBannerTitle}</h2>
-              <p className="text-lg text-white/90 mt-4 max-w-xl">{t.home.donateBannerText}</p>
-            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl max-w-2xl">{t.home.donateBannerTitle}</h2>
+            <p className="text-lg text-white/90 mt-4 max-w-xl">{t.home.donateBannerText}</p>
           </Reveal>
           <Reveal delay={0.15}>
             <Link

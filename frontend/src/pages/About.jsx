@@ -12,9 +12,15 @@ const About = () => {
 
   return (
     <div data-testid="about-page">
-      <section className="relative overflow-hidden bg-[#1C743B]">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0C2415] via-[#135229] to-[#1C743B]">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 25% 25%, #E66C37 0%, transparent 45%), radial-gradient(circle at 80% 75%, #BFE3C8 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
           <Reveal>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{a.title}</h1>
@@ -43,13 +49,11 @@ const About = () => {
       </section>
 
       {/* Engagements */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#E7F0E5]/45" aria-hidden />
+      <section className="relative overflow-hidden bg-[#E7F0E5]">
         <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-8 py-20">
           <Reveal>
             <div className="text-center mb-10">
-              <h2 className="inline-block font-serif text-3xl sm:text-4xl text-[#1B2A20] bg-white/85 backdrop-blur-sm rounded-2xl px-7 py-3 shadow-sm">{a.engagementsTitle}</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2A20]">{a.engagementsTitle}</h2>
             </div>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-5">
@@ -95,9 +99,15 @@ const About = () => {
       </section>
 
       {/* Engagement */}
-      <section className="relative overflow-hidden text-white">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.smilingSeniors})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#0C2415]/65" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#135229] via-[#1C743B] to-[#0C2415] text-white">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 30%, #E66C37 0%, transparent 45%), radial-gradient(circle at 85% 70%, #BFE3C8 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 py-20 text-center">
           <Reveal>
             <h2 className="font-serif text-3xl sm:text-4xl mb-6">{a.engagementTitle}</h2>

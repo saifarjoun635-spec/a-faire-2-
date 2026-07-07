@@ -5,12 +5,16 @@ import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
 
-const PageHeader = ({ title, subtitle, image }) => (
-  <section className="relative overflow-hidden bg-[#135229]">
-    {image && (
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} aria-hidden />
-    )}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
+const PageHeader = ({ title, subtitle }) => (
+  <section className="relative overflow-hidden bg-gradient-to-br from-[#0C2415] via-[#135229] to-[#1C743B]">
+    <div
+      className="absolute inset-0 opacity-20"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 20% 25%, #E66C37 0%, transparent 45%), radial-gradient(circle at 80% 75%, #BFE3C8 0%, transparent 50%)",
+      }}
+      aria-hidden
+    />
     <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
       <Reveal>
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{title}</h1>
@@ -55,7 +59,7 @@ const Services = () => {
 
   return (
     <div data-testid="services-page">
-      <PageHeader title={sl.title} subtitle={sl.subtitle} image={MEDIA.lobby1} />
+      <PageHeader title={sl.title} subtitle={sl.subtitle} />
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
@@ -82,9 +86,7 @@ const Services = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#E7F0E5]/45" aria-hidden />
+      <section className="relative overflow-hidden bg-[#FBF9F6]">
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-8">
           <Reveal><ListBlock icon={Utensils} title={sl.everydayTitle} items={sl.everyday} testid="block-everyday" /></Reveal>
           <Reveal delay={0.1}><ListBlock icon={HeartHandshake} title={sl.careTitle} items={sl.care} testid="block-care" /></Reveal>

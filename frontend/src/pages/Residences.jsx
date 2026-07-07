@@ -22,9 +22,15 @@ const Residences = () => {
   return (
     <div data-testid="residences-page">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#1C743B]">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.lobby1})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0C2415] via-[#135229] to-[#1C743B]">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 25%, #E66C37 0%, transparent 45%), radial-gradient(circle at 80% 75%, #BFE3C8 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
           <Reveal>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{res.title}</h1>
@@ -95,9 +101,15 @@ const Residences = () => {
       </section>
 
       {/* Loisirs & activités */}
-      <section className="relative overflow-hidden text-white">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.elderlyDancing})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#0C2415]/65" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#7A2E0E] via-[#C85526] to-[#E66C37] text-white">
+        <div
+          className="absolute inset-0 opacity-15"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 15% 25%, #F9E5D0 0%, transparent 45%), radial-gradient(circle at 85% 75%, #F0B27A 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
             <span className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/15 text-white mb-6">
@@ -110,7 +122,7 @@ const Residences = () => {
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
               {leisure.map((l) => (
                 <li key={l} className="flex items-start gap-3" data-testid="residence-leisure-item">
-                  <span className="flex items-center justify-center w-7 h-7 rounded-full bg-[#E66C37] text-white shrink-0">
+                  <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white text-[#C85526] shrink-0">
                     <Check className="w-4 h-4" strokeWidth={2.4} />
                   </span>
                   <span className="text-white/95">{l}</span>
