@@ -22,10 +22,10 @@ const Home = () => {
       <section className="relative overflow-hidden min-h-[86vh] flex items-center bg-[#0C2415]">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${MEDIA.lobby2})` }}
+          style={{ backgroundImage: `url(${MEDIA.heroInterior})` }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#0C2415]/70 to-[#0C2415]/40" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#0C2415]/55 to-[#0C2415]/20" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24 lg:py-28 w-full">
           <div className="max-w-2xl">
             <motion.span

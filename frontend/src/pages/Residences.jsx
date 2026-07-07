@@ -13,10 +13,10 @@ const Residences = () => {
   const leisure = t.servicesList.leisure;
 
   const photos = [
-    { src: MEDIA.lobby1, span: "sm:col-span-2 sm:row-span-2" },
-    { src: MEDIA.lobby2, span: "" },
-    { src: MEDIA.smilingSeniors, span: "" },
-    { src: MEDIA.elderlyDancing, span: "sm:col-span-2" },
+    { src: MEDIA.lobby1, span: "sm:col-span-2 sm:row-span-2", pos: "object-center" },
+    { src: MEDIA.lobby2, span: "", pos: "object-center" },
+    { src: MEDIA.smilingSeniors, span: "", pos: "object-top" },
+    { src: MEDIA.elderlyDancing, span: "sm:col-span-2", pos: "object-top" },
   ];
 
   return (
@@ -92,7 +92,7 @@ const Residences = () => {
           {photos.map((p, i) => (
             <Reveal key={i} delay={i * 0.07} className={p.span}>
               <div className="group h-full w-full overflow-hidden rounded-[2rem] shadow-[0_12px_40px_rgba(28,116,59,0.15)]">
-                <img src={p.src} alt={`Résidence ${i + 1}`} loading="lazy" width="1200" height="776" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" data-testid={`residence-photo-${i}`} />
+                <img src={p.src} alt={`Résidence ${i + 1}`} loading="lazy" width="1200" height="776" className={`h-full w-full object-cover ${p.pos} transition-transform duration-700 group-hover:scale-105`} data-testid={`residence-photo-${i}`} />
               </div>
             </Reveal>
           ))}
