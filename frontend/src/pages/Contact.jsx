@@ -38,9 +38,15 @@ const Contact = () => {
 
   return (
     <div data-testid="contact-page">
-      <section className="relative overflow-hidden bg-[#1C743B] text-white">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0C2415] via-[#135229] to-[#1C743B] text-white">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 25%, #E66C37 0%, transparent 45%), radial-gradient(circle at 80% 75%, #BFE3C8 0%, transparent 50%)",
+          }}
+          aria-hidden
+        />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-24">
           <Reveal>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{c.title}</h1>
@@ -72,7 +78,6 @@ const Contact = () => {
                 </li>
               ))}
             </ul>
-            <img src={MEDIA.seniorsTalking} alt="" loading="lazy" width="1200" height="800" className="rounded-[2rem] w-full h-56 object-cover mt-10 shadow-[0_12px_40px_rgba(28,116,59,0.18)]" />
           </Reveal>
 
           <Reveal delay={0.12}>

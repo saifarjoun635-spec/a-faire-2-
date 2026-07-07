@@ -53,7 +53,7 @@ const Services = () => {
   const mainServices = [
     { icon: HomeIcon, img: MEDIA.lobby1, ...sl.hebergement },
     { icon: Sun, img: MEDIA.elderlyDancing, ...sl.repitJour },
-    { icon: Heart, img: MEDIA.homeCare, ...sl.repitDomicile },
+    { icon: Heart, img: MEDIA.childRespite, ...sl.repitDomicile },
     { icon: HeartPulse, img: MEDIA.smilingSeniors, ...sl.repitResidence },
   ];
 
@@ -70,7 +70,7 @@ const Services = () => {
               <Reveal key={s.title} delay={i * 0.06}>
                 <div className="group h-full bg-white rounded-3xl overflow-hidden border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)] hover:-translate-y-1.5 hover:shadow-[0_18px_50px_rgba(28,116,59,0.18)] transition-all duration-300">
                   <div className="h-52 overflow-hidden">
-                    <img src={s.img} alt={s.title} loading="lazy" width="1200" height="800" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={s.img} alt={s.title} loading="lazy" width="1200" height="800" className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <div className="p-8">
                     <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1C743B] text-white mb-5 -mt-16 relative z-10 border-4 border-white shadow-md">

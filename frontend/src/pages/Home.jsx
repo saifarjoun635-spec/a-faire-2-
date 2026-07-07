@@ -12,7 +12,7 @@ const Home = () => {
   const services = [
     { icon: HomeIcon, img: MEDIA.lobby2, ...t.servicesList.hebergement },
     { icon: Sun, img: MEDIA.elderlyDancing, ...t.servicesList.repitJour },
-    { icon: Heart, img: MEDIA.homeCare, ...t.servicesList.repitDomicile },
+    { icon: Heart, img: MEDIA.childRespite, ...t.servicesList.repitDomicile },
     { icon: HeartPulse, img: MEDIA.smilingSeniors, ...t.servicesList.repitResidence },
   ];
 
@@ -21,17 +21,11 @@ const Home = () => {
       {/* HERO */}
       <section className="relative overflow-hidden min-h-[86vh] flex items-center bg-[#0C2415]">
         <div
-          className="absolute inset-0 bg-gradient-to-br from-[#0C2415] via-[#135229] to-[#1C743B]"
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${MEDIA.lobby2})` }}
           aria-hidden
         />
-        <div
-          className="absolute inset-0 opacity-[0.18] mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, #E66C37 0%, transparent 45%), radial-gradient(circle at 80% 70%, #F0B27A 0%, transparent 50%)",
-          }}
-          aria-hidden
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#0C2415]/70 to-[#0C2415]/40" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24 lg:py-28 w-full">
           <div className="max-w-2xl">
             <motion.span
@@ -127,7 +121,7 @@ const Home = () => {
                   className="group h-full bg-white rounded-3xl overflow-hidden border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)] hover:-translate-y-2 hover:shadow-[0_18px_50px_rgba(28,116,59,0.18)] transition-all duration-300"
                 >
                   <div className="h-44 overflow-hidden">
-                    <img src={s.img} alt={s.title} loading="lazy" width="800" height="533" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={s.img} alt={s.title} loading="lazy" width="800" height="533" className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <div className="p-7">
                     <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E7F0E5] text-[#1C743B] mb-5 -mt-14 relative z-10 border-4 border-white shadow-md">
@@ -144,9 +138,7 @@ const Home = () => {
       </section>
 
       {/* MISSION TEASER */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.lobby2})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#E7F0E5]/45" aria-hidden />
+      <section className="relative overflow-hidden bg-[#E7F0E5]">
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
             <img

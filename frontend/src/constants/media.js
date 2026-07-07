@@ -6,6 +6,8 @@ export const MEDIA = {
   seniorsTalking: "https://images.unsplash.com/photo-1764173039543-f9f197744e1b?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200",
   elderlyDancing: "https://images.unsplash.com/photo-1773227059529-3a2bd04ce5b0?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200",
   homeCare: "https://images.unsplash.com/photo-1691139601099-932c01ec198b?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200",
+  childRespite: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800",
+  seniorPortrait: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200",
   softLight: "https://images.unsplash.com/photo-1511836536898-6d6f1b8f6948?crop=entropy&cs=srgb&fm=jpg&q=80&w=1600",
   cityMontreal: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mtl_from_mont_royal_%28cropped%29.jpg/960px-Mtl_from_mont_royal_%28cropped%29.jpg",
   cityOutaouais: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Gatineau_-_QC_-_Museum_of_Civilisation3.jpg/960px-Gatineau_-_QC_-_Museum_of_Civilisation3.jpg",
