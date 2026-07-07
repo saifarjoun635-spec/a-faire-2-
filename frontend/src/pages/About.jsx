@@ -14,7 +14,7 @@ const About = () => {
     <div data-testid="about-page">
       <section className="relative overflow-hidden bg-[#1C743B]">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#135229]/62 to-[#135229]/15" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
           <Reveal>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{a.title}</h1>
@@ -25,7 +25,7 @@ const About = () => {
       {/* Vision & Mission */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#FBF9F6]/78" aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/50" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-12">
           <Reveal>
             <div className="bg-white rounded-3xl p-9 border border-[#DBE4D8] shadow-[0_8px_30px_rgba(28,116,59,0.10)] h-full">
@@ -45,10 +45,12 @@ const About = () => {
       {/* Engagements */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#E7F0E5]/90" aria-hidden />
+        <div className="absolute inset-0 bg-[#E7F0E5]/45" aria-hidden />
         <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-8 py-20">
           <Reveal>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2A20] mb-10 text-center">{a.engagementsTitle}</h2>
+            <div className="text-center mb-10">
+              <h2 className="inline-block font-serif text-3xl sm:text-4xl text-[#1B2A20] bg-white/85 backdrop-blur-sm rounded-2xl px-7 py-3 shadow-sm">{a.engagementsTitle}</h2>
+            </div>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-5">
             {a.engagements.map((e, i) => (
@@ -68,7 +70,7 @@ const About = () => {
       {/* Values */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#FBF9F6]/80" aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/55" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20">
           <Reveal>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2A20] mb-12 text-center">{a.valuesTitle}</h2>
@@ -95,7 +97,7 @@ const About = () => {
       {/* Engagement */}
       <section className="relative overflow-hidden text-white">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.smilingSeniors})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#135229]/85" aria-hidden />
+        <div className="absolute inset-0 bg-[#0C2415]/65" aria-hidden />
         <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 py-20 text-center">
           <Reveal>
             <h2 className="font-serif text-3xl sm:text-4xl mb-6">{a.engagementTitle}</h2>

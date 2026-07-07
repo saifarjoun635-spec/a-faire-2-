@@ -25,7 +25,7 @@ const Home = () => {
           style={{ backgroundImage: `url(${MEDIA.heroNurse})` }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#0C2415]/55 to-[#0C2415]/10" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/80 via-[#0C2415]/40 to-transparent" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24 lg:py-28 w-full">
           <div className="max-w-2xl">
             <motion.span
@@ -89,11 +89,13 @@ const Home = () => {
       {/* DEVISE */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#135229]/88" aria-hidden />
+        <div className="absolute inset-0 bg-[#0C2415]/30" aria-hidden />
         <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-8 py-20 text-center text-white">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#BFE3C8] mb-6">{t.home.deviseLabel}</p>
           <Reveal>
-            <p className="font-serif text-2xl sm:text-3xl lg:text-4xl leading-relaxed">{t.home.devise}</p>
+            <div className="bg-[#0C2415]/75 backdrop-blur-sm rounded-3xl px-6 sm:px-12 py-10 shadow-2xl">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#BFE3C8] mb-6">{t.home.deviseLabel}</p>
+              <p className="font-serif text-2xl sm:text-3xl lg:text-4xl leading-relaxed">{t.home.devise}</p>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -101,7 +103,7 @@ const Home = () => {
       {/* SERVICES GRID */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#FBF9F6]/75" aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/55" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24">
           <Reveal className="max-w-2xl mb-14">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2A20]">{t.home.servicesTitle}</h2>
@@ -134,7 +136,7 @@ const Home = () => {
       {/* MISSION TEASER */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.lobby2})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#E7F0E5]/90" aria-hidden />
+        <div className="absolute inset-0 bg-[#E7F0E5]/45" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-24 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
             <img
@@ -147,15 +149,17 @@ const Home = () => {
             />
           </Reveal>
           <Reveal delay={0.15}>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2A20]">{t.home.missionTeaserTitle}</h2>
-            <p className="text-lg text-[#4B5A51] leading-relaxed mt-6">{t.home.missionTeaserText}</p>
-            <Link
-              to="/a-propos"
-              data-testid="home-about-link"
-              className="inline-flex items-center gap-2 mt-8 text-[#1C743B] font-semibold hover:gap-3 transition-all"
-            >
-              {t.cta.learnMore} <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 lg:p-10 shadow-[0_16px_50px_rgba(28,116,59,0.15)]">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2A20]">{t.home.missionTeaserTitle}</h2>
+              <p className="text-lg text-[#4B5A51] leading-relaxed mt-6">{t.home.missionTeaserText}</p>
+              <Link
+                to="/a-propos"
+                data-testid="home-about-link"
+                className="inline-flex items-center gap-2 mt-8 text-[#1C743B] font-semibold hover:gap-3 transition-all"
+              >
+                {t.cta.learnMore} <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -163,11 +167,13 @@ const Home = () => {
       {/* DONATE BANNER */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#C85526]/92 to-[#E66C37]/85" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#7A2E0E]/55 via-[#A8431D]/40 to-[#C85526]/20" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 flex flex-col lg:flex-row items-center justify-between gap-10 text-white">
           <Reveal>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl max-w-2xl">{t.home.donateBannerTitle}</h2>
-            <p className="text-lg text-white/90 mt-4 max-w-xl">{t.home.donateBannerText}</p>
+            <div className="bg-[#5E2209]/70 backdrop-blur-sm rounded-3xl p-8 lg:p-10 shadow-2xl">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl max-w-2xl">{t.home.donateBannerTitle}</h2>
+              <p className="text-lg text-white/90 mt-4 max-w-xl">{t.home.donateBannerText}</p>
+            </div>
           </Reveal>
           <Reveal delay={0.15}>
             <Link

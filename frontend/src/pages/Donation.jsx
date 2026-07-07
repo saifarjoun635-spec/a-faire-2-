@@ -55,7 +55,7 @@ const Donation = () => {
     <div data-testid="donation-page">
       <section className="relative overflow-hidden bg-[#E66C37] text-white">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#C85526]/92 via-[#C85526]/65 to-[#C85526]/20" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#7A2E0E]/85 via-[#A8431D]/55 to-[#C85526]/10" aria-hidden />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-24">
           <Reveal>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{d.title}</h1>
@@ -66,7 +66,7 @@ const Donation = () => {
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#FBF9F6]/78" aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/55" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-5 gap-12">
           {/* Form */}
           <Reveal className="lg:col-span-3">

@@ -40,7 +40,7 @@ const Contact = () => {
     <div data-testid="contact-page">
       <section className="relative overflow-hidden bg-[#1C743B] text-white">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.homeCare})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#135229]/60 to-[#135229]/15" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-24">
           <Reveal>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{c.title}</h1>
@@ -51,7 +51,7 @@ const Contact = () => {
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#FBF9F6]/78" aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/55" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-14">
           <Reveal>
             <h2 className="font-serif text-3xl text-[#1B2A20] mb-8">{c.infoTitle}</h2>

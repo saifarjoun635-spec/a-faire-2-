@@ -10,7 +10,7 @@ const PageHeader = ({ title, subtitle, image }) => (
     {image && (
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} aria-hidden />
     )}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#135229]/60 to-[#135229]/15" aria-hidden />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
     <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
       <Reveal>
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{title}</h1>
@@ -59,7 +59,7 @@ const Services = () => {
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#FBF9F6]/75" aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/55" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20">
           <div className="grid md:grid-cols-2 gap-6">
             {mainServices.map((s, i) => (
@@ -84,7 +84,7 @@ const Services = () => {
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.seniorsTalking})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#E7F0E5]/90" aria-hidden />
+        <div className="absolute inset-0 bg-[#E7F0E5]/45" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-8">
           <Reveal><ListBlock icon={Utensils} title={sl.everydayTitle} items={sl.everyday} testid="block-everyday" /></Reveal>
           <Reveal delay={0.1}><ListBlock icon={HeartHandshake} title={sl.careTitle} items={sl.care} testid="block-care" /></Reveal>

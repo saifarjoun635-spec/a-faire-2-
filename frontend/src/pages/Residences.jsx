@@ -24,7 +24,7 @@ const Residences = () => {
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#1C743B]">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.lobby1})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/90 via-[#135229]/60 to-[#135229]/15" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
           <Reveal>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">{res.title}</h1>
@@ -36,7 +36,7 @@ const Residences = () => {
       {/* Intro */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.softLight})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#FBF9F6]/78" aria-hidden />
+        <div className="absolute inset-0 bg-[#FBF9F6]/55" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
             <img src={MEDIA.lobby2} alt="Espace de vie" loading="lazy" width="1200" height="675" className="rounded-[2rem] w-full h-[360px] lg:h-[460px] object-cover shadow-[0_16px_50px_rgba(28,116,59,0.22)]" />
@@ -51,10 +51,12 @@ const Residences = () => {
       {/* Features */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.lobby1})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#E7F0E5]/90" aria-hidden />
+        <div className="absolute inset-0 bg-[#E7F0E5]/45" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20">
           <Reveal>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2A20] mb-12 text-center">{res.featuresTitle}</h2>
+            <div className="text-center mb-12">
+              <h2 className="inline-block font-serif text-3xl sm:text-4xl text-[#1B2A20] bg-white/85 backdrop-blur-sm rounded-2xl px-7 py-3 shadow-sm">{res.featuresTitle}</h2>
+            </div>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {res.features.map((f, i) => {
@@ -95,7 +97,7 @@ const Residences = () => {
       {/* Loisirs & activités */}
       <section className="relative overflow-hidden text-white">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.elderlyDancing})` }} aria-hidden />
-        <div className="absolute inset-0 bg-[#135229]/88" aria-hidden />
+        <div className="absolute inset-0 bg-[#0C2415]/65" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
             <span className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/15 text-white mb-6">

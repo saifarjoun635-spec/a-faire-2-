@@ -16,7 +16,7 @@ const Regions = () => {
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#1C743B]">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${MEDIA.smilingSeniors})` }} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#135229]/95 via-[#135229]/75 to-[#135229]/35" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2415]/85 via-[#135229]/45 to-[#135229]/5" aria-hidden />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-20 lg:py-28 text-white">
           <Reveal>
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest bg-white/15 rounded-full px-4 py-2 mb-6">
