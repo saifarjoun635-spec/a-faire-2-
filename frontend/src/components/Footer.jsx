@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Heart, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { CONTACT_INFO } from "../constants/media";
 
@@ -21,11 +21,11 @@ const Footer = () => {
     <footer className="bg-[#1B2A20] text-[#E7F0E5]" data-testid="main-footer">
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-16 grid gap-12 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-3 mb-5">
-            <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#1C743B] text-white">
-              <Heart className="w-5 h-5" strokeWidth={1.8} />
-            </span>
-            <span className="font-serif text-xl text-white">Havre d'Amour et de Paix</span>
+          <div className="mb-5">
+            <div className="inline-flex items-center bg-white rounded-2xl px-5 py-3 shadow-lg" data-testid="footer-logo">
+              <img src="/images/logo-ghap.png" alt="Logo GHAP" className="h-12 w-auto" />
+            </div>
+            <p className="font-serif text-xl text-white mt-4">Havre d'Amour et de Paix</p>
           </div>
           <p className="text-sm leading-relaxed text-[#AFC0B2] max-w-xs">{t.footer.mission}</p>
         </div>

@@ -71,3 +71,7 @@ Coordonnées: 514-464-5880 · info@ghap-hlpg.ca · 245 boulevard Robert Bourassa
   - Carrières : Hero
 - Photos conservées (bien cadrées) : cartes services (grille), image "Un véritable milieu de vie" (lobby2), galerie résidences, photos de ville (Régions), image de la section "Pourquoi nous rejoindre" (Carrières).
 - Photo d'enfant (>5 ans) NON ajoutée : reportée pour éviter tout nouveau problème de cadrage — à préciser avec l'utilisateur (image fournie ou requête spécifique).
+
+## Mise à jour — 8 juillet 2026
+- Logo GHAP (fond transparent, `/images/logo-ghap.png`) intégré au footer sur carte blanche, au-dessus de « Havre d'Amour et de Paix ».
+- Nouveau hero Accueil : photo nette générée (intervenante en santé + résidente dans une RI), `/images/hero-caregiver.webp` (1920px, q=95, netteté renforcée). Ancien `hero-lobby.webp` conservé mais non référencé.
