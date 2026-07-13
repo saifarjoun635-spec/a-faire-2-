@@ -5,12 +5,19 @@ import { toast } from "sonner";
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA, CONTACT_INFO } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const Contact = () => {
   const { t } = useLanguage();
   const c = t.contact;
+  useSEO({
+    title: "Contact — Nous joindre",
+    description:
+      "Communiquez avec Groupe Havre d'Amour et de Paix inc. Téléphone 514-464-5880, courriel info@ghap-hlpg.ca. 245 boul. Robert Bourassa, Montréal, QC.",
+    path: "/contact",
+  });
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [sending, setSending] = useState(false);
 

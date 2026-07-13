@@ -3,12 +3,19 @@ import { Heart, ShieldCheck, Leaf, Users, Sprout, Repeat, Handshake, Award, Chec
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const valueIcons = [Heart, ShieldCheck, Leaf, Users, Sprout, Repeat, Handshake, Award];
 
 const About = () => {
   const { t } = useLanguage();
   const a = t.about;
+  useSEO({
+    title: "À propos — Notre mission, notre vision, nos valeurs",
+    description:
+      "Groupe Havre d'Amour et de Paix inc. (GHAP) : organisme à but non lucratif dédié à l'accompagnement des personnes vulnérables et de leurs proches aidants.",
+    path: "/a-propos",
+  });
 
   return (
     <div data-testid="about-page">

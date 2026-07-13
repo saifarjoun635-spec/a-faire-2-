@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const MAX_SIZE = 5 * 1024 * 1024;
@@ -13,6 +14,12 @@ const whyIcons = [Heart, Sparkles, Users];
 const Careers = () => {
   const { t } = useLanguage();
   const c = t.careers;
+  useSEO({
+    title: "Carrières — Rejoignez notre équipe",
+    description:
+      "Postulez chez GHAP : préposés, intervenants, cuisiniers, gestionnaires. Envoyez votre CV en ligne et venez faire une différence.",
+    path: "/carrieres",
+  });
   const [form, setForm] = useState({ name: "", email: "", phone: "", position: "", message: "" });
   const [cv, setCv] = useState(null);
   const [sending, setSending] = useState(false);

@@ -5,9 +5,16 @@ import { Home as HomeIcon, Sun, HeartPulse, ArrowRight, Heart, HandHeart } from 
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const Home = () => {
   const { t } = useLanguage();
+  useSEO({
+    title: "Accueil — Ressource Intermédiaire & Répit",
+    description:
+      "Groupe Havre d'Amour et de Paix (GHAP) : Ressource Intermédiaire (RI), répit au centre de jour et répit à domicile pour aînés, personnes vivant avec une DI-TSA ou des enjeux de santé mentale. Montréal, Outaouais, Mauricie.",
+    path: "/",
+  });
 
   const services = [
     { icon: HomeIcon, img: MEDIA.lobby2, ...t.servicesList.hebergement },

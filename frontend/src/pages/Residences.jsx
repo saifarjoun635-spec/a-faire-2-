@@ -4,6 +4,7 @@ import { BedDouble, Sofa, Utensils, ShieldCheck, HeartPulse, Music, Check } from
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const featureIcons = [BedDouble, Sofa, Utensils, ShieldCheck, HeartPulse, Music];
 
@@ -11,6 +12,12 @@ const Residences = () => {
   const { t } = useLanguage();
   const res = t.residences;
   const leisure = t.servicesList.leisure;
+  useSEO({
+    title: "Résidences — Milieu de vie chaleureux & sécuritaire",
+    description:
+      "Découvrez nos résidences de type Ressource Intermédiaire : chambres confortables, repas maison, activités adaptées et accompagnement 24/7.",
+    path: "/residences",
+  });
 
   const photos = [
     { src: MEDIA.lobby1, span: "sm:col-span-2 sm:row-span-2", pos: "object-center" },

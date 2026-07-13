@@ -4,6 +4,7 @@ import { Home as HomeIcon, Sun, HeartPulse, Heart, Check, Utensils, HeartHandsha
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const PageHeader = ({ title, subtitle }) => (
   <section className="relative overflow-hidden bg-gradient-to-br from-[#0C2415] via-[#135229] to-[#1C743B]">
@@ -49,6 +50,12 @@ const ListBlock = ({ icon: Icon, title, items, testid }) => (
 const Services = () => {
   const { t } = useLanguage();
   const sl = t.servicesList;
+  useSEO({
+    title: "Services — Hébergement RI, Répit centre de jour & à domicile",
+    description:
+      "Nos services : hébergement en Ressource Intermédiaire (RI), répit au centre de jour, répit à domicile et répit en résidence pour aînés, DI-TSA et santé mentale.",
+    path: "/services",
+  });
 
   const mainServices = [
     { icon: HomeIcon, img: MEDIA.lobby1, ...sl.hebergement },

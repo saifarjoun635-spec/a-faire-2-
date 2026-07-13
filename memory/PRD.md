@@ -75,3 +75,17 @@ Coordonnées: 514-464-5880 · info@ghap-hlpg.ca · 245 boulevard Robert Bourassa
 ## Mise à jour — 8 juillet 2026
 - Logo GHAP (fond transparent, `/images/logo-ghap.png`) intégré au footer sur carte blanche, au-dessus de « Havre d'Amour et de Paix ».
 - Nouveau hero Accueil : photo nette générée (intervenante en santé + résidente dans une RI), `/images/hero-caregiver.webp` (1920px, q=95, netteté renforcée). Ancien `hero-lobby.webp` conservé mais non référencé.
+
+
+## Référencement Google (SEO) — Février 2026
+- `public/index.html` enrichi : titre optimisé, meta description ciblée (mots-clés Havre d'Amour et de Paix, GHAP, RI, répit, Montréal…), keywords, robots, geo, canonical `https://havredamouretdepaix.ca/`, hreflang FR/EN, favicon + apple-touch-icon (`/images/logo-ghap.png`).
+- Balises Open Graph et Twitter Card pour un aperçu propre lors du partage sur Facebook/WhatsApp/LinkedIn.
+- Données structurées JSON-LD : schema.org NGO (nom, logo, adresse postale, téléphone, courriel, régions desservies, langues) + WebSite.
+- `public/robots.txt` (Allow / — Disallow /admin et /don/merci) + `public/sitemap.xml` avec les 8 pages publiques.
+- Nouveau hook `src/hooks/useSEO.js` : chaque page (Home, Services, Résidences, À propos, Régions, Contact, Carrières, Don) définit son propre `<title>`, meta description et canonical au routage.
+- ACTION UTILISATEUR REQUISE APRÈS DÉPLOIEMENT :
+  1. Configurer le domaine `havredamouretdepaix.ca` via le dashboard de déploiement Emergent.
+  2. Ouvrir Google Search Console (search.google.com/search-console), ajouter la propriété `https://havredamouretdepaix.ca/`, valider, puis soumettre le sitemap `https://havredamouretdepaix.ca/sitemap.xml`.
+  3. Cliquer « Demander l'indexation » sur la page d'accueil pour accélérer.
+  4. (Optionnel) Créer une fiche Google Business Profile au nom de l'organisme pour apparaître avec logo/adresse/téléphone dans la carte de connaissance.
+- Délai attendu : 1 à 3 semaines pour l'indexation complète, quelques jours si Search Console est utilisé.

@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const PRESETS = ["25", "50", "100", "250"];
@@ -13,6 +14,12 @@ const Donation = () => {
   const { t } = useLanguage();
   const d = t.donation;
   const [selected, setSelected] = useState("50");
+  useSEO({
+    title: "Faire un don — Soutenez notre mission",
+    description:
+      "Votre don soutient l'accompagnement des personnes vulnérables. Paiement sécurisé par Stripe. Reçu fiscal disponible.",
+    path: "/don",
+  });
   const [custom, setCustom] = useState("");
   const [donor, setDonor] = useState({ name: "", email: "" });
   const [loading, setLoading] = useState(false);

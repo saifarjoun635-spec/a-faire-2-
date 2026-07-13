@@ -4,12 +4,19 @@ import { MapPin, ArrowRight, Building2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { MEDIA, REGION_CREDITS } from "../constants/media";
 import { Reveal } from "../components/Reveal";
+import { useSEO } from "../hooks/useSEO";
 
 const cardImages = [MEDIA.cityMontreal, MEDIA.cityOutaouais, MEDIA.cityMauricie, MEDIA.cityOttawa];
 
 const Regions = () => {
   const { t } = useLanguage();
   const r = t.regions;
+  useSEO({
+    title: "Régions desservies — Montréal, Outaouais, Mauricie, Ottawa",
+    description:
+      "GHAP est présent à Montréal, en Outaouais, en Mauricie et à Ottawa. Trouvez la résidence ou le service de répit le plus proche de vous.",
+    path: "/regions",
+  });
 
   return (
     <div data-testid="regions-page">
