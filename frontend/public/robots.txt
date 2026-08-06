@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /don/merci
 
-Sitemap: https://havredamouretdepaix.ca/sitemap.xml
+Sitemap: https://groupehavredamouretdepaix.ca/sitemap.xml

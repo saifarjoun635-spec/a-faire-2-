@@ -22,7 +22,7 @@ export const useSEO = ({ title, description, path = "" }) => {
       if (og) og.setAttribute("content", description);
     }
 
-    const url = `https://havredamouretdepaix.ca${path || window.location.pathname}`;
+    const url = `https://groupehavredamouretdepaix.ca${path || window.location.pathname}`;
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement("link");
